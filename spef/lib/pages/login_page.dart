@@ -1,130 +1,240 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:spef/pages/ResetPasswordPage.dart';
+import 'package:spef/pages/signup.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool _isChecked = false;
+  bool _obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: Color(0xFFFBCA19),
+          color: Color(0xFFFBCA19), // Background color
         ),
-        child: Center(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 63,
-                height: 59,
-                margin: EdgeInsets.only(bottom: 20.0),
+                padding: EdgeInsets.only(top: 179),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 63,
+                      height: 59,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(119.5),
+                        image: DecorationImage(
+                          image: AssetImage(
+                              'assets/logos/logospef.png'), 
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'SPEF',
+                      style: TextStyle(
+                        fontSize: 32,
+                        color: Color(0xFF2B2B2B),
+                        fontFamily: 'Racing_Sans_One',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/photo_2024-03-07_09-42-47 3.png'), 
-                    fit: BoxFit.cover,
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
                   ),
                 ),
-              ),
-              Text(
-                'SPEF',
-                style: TextStyle(
-                  fontSize: 32,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                width: 360,
-                height: 553,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
                 child: Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.fromLTRB(19, 21.3, 19.5, 50),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Center(
+                        child: Text(
+                          'connectez-vous',
+                          style: TextStyle(
+                            fontSize: 32,
+                            color: Color(0xFF2B2B2B),
+                            fontFamily: 'Quicksand',
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 25),
                       Text(
                         'Email',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
+                          color: Color(0xFF2B2B2B),
+                          fontFamily: 'Quicksand',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 10),
                       TextField(
                         decoration: InputDecoration(
-                          hintText: 'Enter your email',
-                          border: OutlineInputBorder(),
+                          hintText: 'Entrez votre adresse e-mail',
+                          hintStyle: TextStyle(
+                            fontSize: 15,
+                            color: Color(0xFFADADAD),
+                            fontFamily: 'Quicksand',
+                          ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 12),
                       Text(
                         'Mot de passe',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
+                          color: Color(0xFF2B2B2B),
+                          fontFamily: 'Quicksand',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 10),
                       TextField(
-                        obscureText: true,
+                        obscureText: _obscureText,
                         decoration: InputDecoration(
-                          hintText: 'Enter your password',
-                          border: OutlineInputBorder(),
+                          hintText: 'Entrez votre mot de passe',
+                          hintStyle: TextStyle(
+                            fontSize: 15,
+                            color: Color(0xFFADADAD),
+                            fontFamily: 'Quicksand',
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 4.4),
+                              child: Icon(
+                                _obscureText ? Icons.visibility : Icons.visibility_off,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 36),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
                               Checkbox(
-                                value: false,
-                                onChanged: (value) {},
+                                value: _isChecked,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    _isChecked = value ?? false;
+                                  });
+                                },
                               ),
-                              Text('Restez connecté'),
+                              Text(
+                                'Rester connecté ?',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Color(0xFF707070),
+                                  fontFamily: 'Quicksand',
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
                             ],
                           ),
                           GestureDetector(
                             onTap: () {
-                             
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ResetPasswordPage(),
+                                ),
+                              );
                             },
                             child: Text(
                               'Mot de passe oublié ?',
                               style: TextStyle(
+                                fontSize: 12,
                                 color: Colors.blue,
+                                fontFamily: 'Quicksand',
+                                fontWeight: FontWeight.normal,
                               ),
                             ),
                           ),
                         ],
                       ),
                       SizedBox(height: 20),
-                      SizedBox(
+                      Container(
                         width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Navigate to home page
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MyHomePage(),
-                              ),
-                            );
-                          },
-                          child: Text('Connexion'),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFBCA19),
+                          borderRadius: BorderRadius.circular(50),
                         ),
-                      ),
-                      SizedBox(height: 10),
-                      Center(
-                        child: Text(
-                          'Vous n’avez pas encore de compte ? Inscrivez-vous ici',
-                          style: TextStyle(
-                            color: Colors.blue,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(13, 14, 0.6, 14),
+                            child: Text(
+                              'Connexion',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontFamily: 'Quicksand',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
+                      ),
+                     SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                           Text(
+                            'vous n\'avez pas encore de compte',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black,
+                              fontFamily: 'Quicksand',
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          SizedBox(width: 8.0),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUpPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'inscrivez-vous ici',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Color(0xFFFBCA19),
+                                fontFamily: 'Quicksand',
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          
+                         
+                        ],
                       ),
                     ],
                   ),

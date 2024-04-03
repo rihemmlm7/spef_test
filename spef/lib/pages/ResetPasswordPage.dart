@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
+class ResetPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        title: Text('Mot de pass oblier'),
       ),
       body: Center(
         child: Padding(
@@ -16,23 +16,15 @@ class SignUpPage extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  hintText: 'Enter your email',
+                  hintText: 'Enter votre email',
                 ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  hintText: 'Enter your password',
-                ),
-                obscureText: true,
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                  
                 },
-                child: Text('Sign Up'),
+                child: Text('motpass'),
               ),
             ],
           ),
