@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spef/pages/ResetPasswordPage.dart';
 import 'package:spef/pages/signup.dart';
-
+import 'package:spef/pages/home.dart';
+import 'package:spef/pages/styles/login_page_style.dart'; 
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -15,15 +16,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          color: Color(0xFFFBCA19), // Background color
-        ),
+        decoration: LoginPageStyle.containerDecoration(), 
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.only(top: 179),
+                padding: EdgeInsets.only(top: 190),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -33,8 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(119.5),
                         image: DecorationImage(
-                          image: AssetImage(
-                              'assets/logos/logospef.png'), 
+                          image: AssetImage('assets/logos/logospef.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -42,23 +40,13 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(width: 10),
                     Text(
                       'SPEF',
-                      style: TextStyle(
-                        fontSize: 32,
-                        color: Color(0xFF2B2B2B),
-                        fontFamily: 'Racing_Sans_One',
-                      ),
+                      style: LoginPageStyle.titleTextStyle(), 
                     ),
                   ],
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                ),
+                decoration: LoginPageStyle.textFieldDecoration(),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(19, 21.3, 19.5, 50),
                   child: Column(
@@ -66,12 +54,12 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Center(
                         child: Text(
-                          'connectez-vous',
+                          'Connectez-vous',
                           style: TextStyle(
-                            fontSize: 32,
+                            fontSize: 25,
                             color: Color(0xFF2B2B2B),
                             fontFamily: 'Quicksand',
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -123,7 +111,9 @@ class _LoginPageState extends State<LoginPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(right: 4.4),
                               child: Icon(
-                                _obscureText ? Icons.visibility : Icons.visibility_off,
+                                _obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
                                 color: Colors.grey,
                               ),
                             ),
@@ -184,9 +174,17 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    MyHomePage(), // Navigate to home.dart
+                              ),
+                            );
+                          },
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(13, 14, 0.6, 14),
+                            padding: const EdgeInsets.fromLTRB(0, 14, 0.6, 14),
                             child: Text(
                               'Connexion',
                               style: TextStyle(
@@ -199,11 +197,11 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                     SizedBox(height: 20),
+                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                           Text(
+                          Text(
                             'vous n\'avez pas encore de compte',
                             style: TextStyle(
                               fontSize: 12,
@@ -232,8 +230,6 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          
-                         
                         ],
                       ),
                     ],

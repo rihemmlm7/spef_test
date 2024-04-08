@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:spef/pages/splashScreen.dart';
 import './pages/login_page.dart'; 
+import './pages/splashScreen.dart'; 
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+ const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-          debugShowCheckedModeBanner: false, 
-          home: Splash_Animated());
-    
+      theme: ThemeData(
+        primarySwatch: Colors.amber
+      ),
+      debugShowCheckedModeBanner: false, 
+      home: SplashWidget(), 
+    );
   }
 }
