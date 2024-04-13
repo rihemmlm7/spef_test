@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => MyHomePage(),
+          builder: (context) => Home(),
         ),
       );
     }
@@ -95,7 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.only(top: 50),
+                padding: EdgeInsets.only(top: 70),
                 child: Center(
                   child: Text(
                     'Inscrivez-vous',
@@ -265,7 +265,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 12),
+                      
                       SizedBox(height: 36),
                       Container(
                         width: double.infinity,
@@ -319,14 +319,26 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ],
                       ),
+                      SizedBox(height: 60),
                     ],
+                    
+                    
                   ),
+                 
+                 
                 ),
+                
               ),
+              
             ],
+            
           ),
+          
         ),
+
+        
       ),
+      
     );
   }
 }

@@ -27,8 +27,6 @@ flutter:
     - assets/logos/
     - assets/icons/
   fonts:
-    - family: Poppins
-    #-  fonts:
-       # - asset: fonts/Schyler-Regular.ttf
-          # style: italic  # if you don't need italic variant
-    # Add additional font families here if needed
+    - family: Roboto
+      
+      

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart'; // Import the file where LoginPage is defined
+import 'login_page.dart'; 
 
 class SplashWidget extends StatefulWidget {
   const SplashWidget({Key? key}) : super(key: key);
@@ -32,7 +32,6 @@ class _SplashWidgetState extends State<SplashWidget>
   void _startAnimations() {
     _textAnimationController.forward();
     _imageAnimationController.forward();
-
   
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
@@ -104,6 +103,7 @@ class _SplashWidgetState extends State<SplashWidget>
                               child: Text(
                                 'SPEF',
                                 style: TextStyle(
+                                  color: Colors.black, 
                                   fontSize: 30,
                                   fontWeight: FontWeight.w900,
                                   fontStyle: FontStyle.italic,
@@ -123,10 +123,4 @@ class _SplashWidgetState extends State<SplashWidget>
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: SplashWidget(),
-  ));
 }
