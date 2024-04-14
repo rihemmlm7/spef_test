@@ -18,6 +18,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
         scaffoldBackgroundColor: const Color(0xFFE8E8E8),
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+          // Add more text styles as needed
+        ),
+        // Add more theme properties as needed
       ),
       debugShowCheckedModeBanner: false, 
       home: SplashWidget(), 
