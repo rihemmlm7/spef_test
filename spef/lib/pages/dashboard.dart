@@ -14,23 +14,73 @@ class DashboardPage extends StatelessWidget {
             width: 40,
             height: 40,
             child: Image.network(
-                'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-0.jpg',
-                fit: BoxFit.cover,
+              'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-0.jpg',
+              fit: BoxFit.cover,
             ),
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: MyComponent(),
+      body: Padding(
+        padding:
+            const EdgeInsets.all(8.0), // Add padding around the entire body
+
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(
+                  'Rapport du jour',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: MyComponent(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(
+                  'Notification',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: NotifComp(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: NotifComp(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: NotifComp(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: NotifComp(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: NotifComp(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: NotifComp(),
+              ),
+            ],
           ),
-          SizedBox(height: 0),
-          Expanded(
-            child: NotifComp(),
-          ),
-        ],
+        ),
       ),
     );
   }

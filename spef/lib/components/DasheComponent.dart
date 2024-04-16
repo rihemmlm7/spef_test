@@ -6,26 +6,16 @@ class MyComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Text(
-              'Rapport du jour',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-          ),
-          SizedBox(height: 10),
+          
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildItem(
+              _buildDashboardCard(
+                context,
                 Colors.white,
                 120,
                 count,
@@ -33,8 +23,9 @@ class MyComponent extends StatelessWidget {
                 Colors.blue,
                 'Total des visite',
               ),
-              SizedBox(width: 15),
-              _buildItem(
+              SizedBox(width: MediaQuery.of(context).size.width / 23),
+              _buildDashboardCard(
+                context,
                 Colors.white,
                 120,
                 count,
@@ -44,11 +35,12 @@ class MyComponent extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 10),
+          SizedBox(height: MediaQuery.of(context).size.height / 90),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildItem(
+              _buildDashboardCard(
+                context,
                 Colors.white,
                 120,
                 count,
@@ -56,8 +48,9 @@ class MyComponent extends StatelessWidget {
                 Colors.orange,
                 'Tournées du jour',
               ),
-              SizedBox(width: 15),
-              _buildItem(
+              SizedBox(width: MediaQuery.of(context).size.width / 23),
+              _buildDashboardCard(
+                context,
                 Colors.white,
                 120,
                 count,
@@ -72,41 +65,49 @@ class MyComponent extends StatelessWidget {
     );
   }
 
-  Widget _buildItem(Color bgColor, double width, int count, IconData icon,
-      Color iconColor, String itemName) {
+  Widget _buildDashboardCard(
+    BuildContext context,
+    Color bgColor,
+    double width,
+    int count,
+    IconData icon,
+    Color iconColor,
+    String itemName,
+  ) {
     return Expanded(
-      child: Container(
-        width: width,
-        padding: EdgeInsets.symmetric(vertical: 25, horizontal: 9),
-        decoration: BoxDecoration(
-          color: bgColor,
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(icon, size: 40, color: iconColor),
-                SizedBox(width: 80),
-                Text(
-                  count.toString(),
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.black87,
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 25, horizontal: 9),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(icon, size: 40, color: iconColor),
+                  SizedBox(width: 80),
+                  Text(
+                    count.toString(),
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black87,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
-            Text(
-              itemName,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[500],
+                ],
               ),
-            ),
-          ],
+              SizedBox(height: 10),
+              Text(
+                itemName,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[500],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spef/components/Searchcompo.dart';
 import 'package:spef/components/prospect.dart';
 
-class ClientProspect extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Client Prospect Content'),
-    );
-  }
-}
 
 class ClientPage extends StatelessWidget {
   final int clientsTab1 = 10;
@@ -65,14 +58,45 @@ class ClientPage extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            Expanded(
-            child: clientprospect(),
+        body: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0),
+              topRight: Radius.circular(20.0),
+            ),
           ),
-          
-            Center(child: Text('Tab 2 Content')),
-          ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.04,
+              vertical: MediaQuery.of(context).size.height * 0.02,
+            ),
+            child: TabBarView(
+              children: [
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.02),
+                      child: CustomSearchWidget(
+                        controller: TextEditingController(),
+                        focusNode: FocusNode(),
+                        onChanged: (value) {
+                          // Handle search query changes
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0),
+                        child: clientprospect(),
+                      ),
+                    ),
+                  ],
+                ),
+                Center(child: Text('Tab 2 Content')),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -97,6 +121,4 @@ class ClientPage extends StatelessWidget {
       ),
     );
   }
-
-  
 }

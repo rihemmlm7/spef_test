@@ -8,6 +8,31 @@ class NotifComp extends StatefulWidget {
 class _NotifCompState extends State<NotifComp> {
   bool expanded = false;
 
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return Container(
+      padding: EdgeInsets.all(9),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 2), 
+          _buildItem(
+            bgColor: Colors.white,
+            width: screenWidth * 0.9,
+            count: 78,
+            prospect: 'Prospect',
+            time: 'Il y a 30 min',
+            newClient: '🌟 Nouveau client:',
+            description:
+                'Un nouveau prospect, [Nom de client], a été ajouté.',
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildItem({
     required Color bgColor,
     required double width,
@@ -17,31 +42,7 @@ class _NotifCompState extends State<NotifComp> {
     required String newClient,
     required String description,
   }) {
-    bool isTruncated = false;
-    String truncatedDescription = description;
-
-    if (!expanded) {
-      final TextPainter textPainter = TextPainter(
-        maxLines: 1,
-        text: TextSpan(
-          text: description,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.grey[500],
-          ),
-        ),
-        textDirection: TextDirection.ltr,
-      )..layout(maxWidth: width - 30);
-      if (textPainter.didExceedMaxLines) {
-        isTruncated = true;
-        truncatedDescription = description.substring(
-                0,
-                textPainter
-                    .getPositionForOffset(Offset(width - 50, 0))
-                    .offset) +
-            '...'; 
-      }
-    }
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return GestureDetector(
       onTap: () {
@@ -49,113 +50,73 @@ class _NotifCompState extends State<NotifComp> {
           expanded = !expanded;
         });
       },
-      child: Container(
+      child: SizedBox(
         width: width,
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 7.5),
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      '$prospect:',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.red[700],
-                      ),
-                    ),
-                    SizedBox(width: 6),
-                    Text(
-                      time,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  ],
-                ),
-                Icon(
-                  expanded ? Icons.remove : Icons.add,
-                  color: Colors.black,
-                ),
-              ],
-            ),
-            Text(
-              newClient,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[800],
-              ),
-            ),
-            SizedBox(height: 4),
-            AnimatedContainer(
-              duration: Duration(milliseconds: 300),
-              height: expanded ? null : 20,
-              curve: Curves.easeInOut,
-              child: Text(
-                expanded ? description : truncatedDescription,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[500],
-                ),
-                maxLines: expanded ? null : 1,
-                overflow: TextOverflow.fade,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: Text(
-                    'Notification',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buildItem(
-                      bgColor: Colors.white,
-                      width: 370,
-                      count: 78,
-                      prospect: 'Prospect',
-                      time: 'Il y a 30 min',
-                      newClient: '🌟 Nouveau client:',
-                      description:
-                          'Un nouveau prospect, [Nom de client], a été ajoutrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr.',
-                    ),
-                  ],
-                ),
-              ],
-            ),
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            vertical: screenWidth * 0.03,
+            horizontal: screenWidth * 0.03,
           ),
-        ],
+          decoration: BoxDecoration(
+            color: bgColor,
+            borderRadius: BorderRadius.circular(screenWidth * 0.03),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        '$prospect:',
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.03,
+                          color: Colors.red[700],
+                        ),
+                      ),
+                      SizedBox(width: screenWidth * 0.01),
+                      Text(
+                        time,
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.03,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Icon(
+                    expanded ? Icons.remove : Icons.add,
+                    color: Colors.black,
+                  ),
+                ],
+              ),
+              Text(
+                newClient,
+                style: TextStyle(
+                  fontSize: screenWidth * 0.04,
+                  color: Colors.grey[800],
+                ),
+              ),
+              SizedBox(height: screenWidth * 0.01),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                height: expanded ? null : screenWidth * 0.04,
+                curve: Curves.easeInOut,
+                child: Text(
+                  expanded ? description : description.substring(0, 50) + '...',
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.03,
+                    color: Colors.grey[500],
+                  ),
+                  maxLines: expanded ? null : 1,
+                  overflow: TextOverflow.fade,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
