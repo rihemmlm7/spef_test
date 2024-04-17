@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ResetPasswordPage extends StatelessWidget {
+class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reset Password'),
+        title: Text('Profile'),
       ),
       body: Center(
-        child: Text('Reset Password Page'),
+        child: Text(
+          'Profile Page Content',
+          style: TextStyle(fontSize: 24.0),
+        ),
       ),
     );
   }

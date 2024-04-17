@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spef/components/ClientInfoCard.dart';
 import 'package:spef/components/Searchcompo.dart';
-import 'package:spef/components/prospect.dart';
+import 'package:spef/pages/ProfilePage.dart';
 
 
 class ClientPage extends StatelessWidget {
@@ -59,13 +60,6 @@ class ClientPage extends StatelessWidget {
           ),
         ),
         body: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0),
-              topRight: Radius.circular(20.0),
-            ),
-          ),
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * 0.04,
@@ -80,15 +74,39 @@ class ClientPage extends StatelessWidget {
                       child: CustomSearchWidget(
                         controller: TextEditingController(),
                         focusNode: FocusNode(),
-                        onChanged: (value) {
-                          // Handle search query changes
-                        },
+                        onChanged: (value) {},
                       ),
                     ),
                     Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0),
-                        child: clientprospect(),
+                      child: Container(
+                        padding: EdgeInsets.all(2.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ListView.builder(
+                          itemCount: 29,
+                          itemBuilder: (BuildContext context, int index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ProfilePage()),                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 0),
+                                    child: Container(
+                                      padding: EdgeInsets.all(0),
+                                      child: ClientListItem(),                                    ),
+                                  ),
+                                  Divider(color: Colors.black),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],

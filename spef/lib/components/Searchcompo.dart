@@ -22,12 +22,12 @@ class CustomSearchWidget extends StatelessWidget {
         obscureText: false,
         onChanged: onChanged,
         decoration: InputDecoration(
-          hintText: 'Search',
+          hintText: 'Recherche',
           filled: true,
-          fillColor: Colors.grey[200], // You can set your desired color here
+          fillColor: Colors.grey[400], // You can set your desired color here
           prefixIcon: Icon(
             Icons.search_sharp,
-            color: Colors.grey[600], // You can set your desired icon color here
+            color: Colors.grey[800], // You can set your desired icon color here
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(100),
@@ -51,7 +51,6 @@ class CustomSearchWidget extends StatelessWidget {
           letterSpacing: 0,
         ),
         validator: (value) {
-          // Add your validation logic here if needed
           return null;
         },
       ),
