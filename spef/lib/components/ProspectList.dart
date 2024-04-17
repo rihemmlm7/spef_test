@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ClientListItem extends StatelessWidget {
+class ProspectList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
