@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spef/pages/dashboard.dart';
-import 'package:spef/pages/home.dart';
-import './pages/login_page.dart'; 
 import './pages/splashScreen.dart'; 
-import './components/DasheComponent.dart'; 
-import 'package:device_preview/device_preview.dart';
+
 
 
 void main() {

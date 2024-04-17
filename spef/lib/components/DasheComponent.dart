@@ -35,7 +35,7 @@ class MyComponent extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: MediaQuery.of(context).size.height / 90),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.01),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
