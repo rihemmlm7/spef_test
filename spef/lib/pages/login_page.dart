@@ -142,6 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Padding(
                                     padding: const EdgeInsets.only(right: 0),
                                     child: Checkbox(
+                                      activeColor: Colors.blue,
                                       value: _isChecked,
                                       onChanged: (bool? value) {
                                         setState(() {

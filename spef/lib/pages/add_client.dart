@@ -6,6 +6,8 @@ class AddClientPage extends StatefulWidget {
 }
 
 class _AddClientPageState extends State<AddClientPage> {
+  String _selectedType = 'type1'; // Set default value here
+
   String _status = 'client';
 
   @override
@@ -16,9 +18,10 @@ class _AddClientPageState extends State<AddClientPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Client'),
+        backgroundColor: Colors.amber,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(25.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -48,6 +51,7 @@ class _AddClientPageState extends State<AddClientPage> {
             Row(
               children: [
                 Radio(
+                  activeColor: Colors.blue,
                   value: 'client',
                   groupValue: _status,
                   onChanged: (value) {
@@ -57,8 +61,9 @@ class _AddClientPageState extends State<AddClientPage> {
                   },
                 ),
                 Text('Client'),
-                SizedBox(width: screenSize.width * 0.4), // Adjusted width based on screen width
+                SizedBox(width: screenSize.width / 2.66), // Adjusted width based on screen width
                 Radio(
+                  activeColor: Colors.blue,
                   value: 'prospect',
                   groupValue: _status,
                   onChanged: (value) {
@@ -77,12 +82,13 @@ class _AddClientPageState extends State<AddClientPage> {
             ),
             SizedBox(height: screenSize.height * 0.01),
             DropdownButtonFormField<String>(
+              value: _selectedType,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide.none, 
+                  borderSide: BorderSide.none,
                 ),
               ),
               items: [
@@ -104,35 +110,114 @@ class _AddClientPageState extends State<AddClientPage> {
                 ),
               ],
               onChanged: (value) {
-                // Handle dropdown selection
+                setState(() {
+                  _selectedType = value!;
+                });
               },
             ),
-            TextFormField(
-              decoration: InputDecoration(labelText: 'Nom'),
+            SizedBox(height: screenSize.height * 0.02),
+            Text(
+              'Nom',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Prenom'),
+              decoration: InputDecoration(
+                hintText: 'Nom de entrprise',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Nom de l\'Entreprise'),
+              decoration: InputDecoration(
+                labelText: 'Prenom',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Téléphone'),
+              decoration: InputDecoration(
+                labelText: 'Nom de l\'Entreprise',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: InputDecoration(
+                labelText: 'Téléphone',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'RC'),
+              decoration: InputDecoration(
+                labelText: 'Email',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'AI'),
+              decoration: InputDecoration(
+                labelText: 'RC',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'NIF'),
+              decoration: InputDecoration(
+                labelText: 'AI',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'NIC'),
+              decoration: InputDecoration(
+                labelText: 'NIF',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'NIC',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
             SizedBox(height: screenSize.height * 0.02), // Adjusted height based on screen height
             Row(
@@ -148,7 +233,15 @@ class _AddClientPageState extends State<AddClientPage> {
                   onPressed: () {
                     // Handle validate button press
                   },
-                  child: Text('Valider'),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.amber),
+                  ),
+                  child: Text(
+                    'Valider',
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
               ],
             ),
