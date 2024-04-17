@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spef/components/ClientInfoCard.dart';
 import 'package:spef/components/ClienttList.dart';
+import 'package:spef/components/ProspectList.dart';
 import 'package:spef/components/Searchcompo.dart';
 import 'package:spef/pages/ProfilePage.dart';
 
@@ -75,31 +75,41 @@ class ClientPage extends StatelessWidget {
                         controller: TextEditingController(),
                         focusNode: FocusNode(),
                         onChanged: (value) {
-                          
+
                         },
                       ),
                     ),
                     Expanded( // Move the Expanded widget here
                       child: Container(
-                        padding: EdgeInsets.all(2.0), 
+                        padding: EdgeInsets.all(2.0),
                         decoration: BoxDecoration(
-                          color: Colors.white, 
-                          borderRadius: BorderRadius.circular(20), 
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: ListView.builder(
-                          itemCount: 29, 
+                          itemCount: 29,
                           itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(vertical:0),
-                                  child: Container(
-                                    padding: EdgeInsets.all(0),
-                                    child: ClientListItem(), 
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProfilePage(),
                                   ),
-                                ),
-                                Divider(color: Colors.black), // Add a black divider between items
-                              ],
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical:0),
+                                    child: Container(
+                                      padding: EdgeInsets.all(0),
+                                      child: ProspectList(),
+                                    ),
+                                  ),
+                                  Divider(color: Colors.black), // Add a black divider between items
+                                ],
+                              ),
                             );
                           },
                         ),
@@ -115,31 +125,41 @@ class ClientPage extends StatelessWidget {
                         controller: TextEditingController(),
                         focusNode: FocusNode(),
                         onChanged: (value) {
-                          
+
                         },
                       ),
                     ),
-                    Expanded( // Move the Expanded widget here
+                    Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(2.0), 
+                        padding: EdgeInsets.all(2.0),
                         decoration: BoxDecoration(
-                          color: Colors.white, 
-                          borderRadius: BorderRadius.circular(20), 
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: ListView.builder(
-                          itemCount: 29, 
+                          itemCount: 29,
                           itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(vertical:0),
-                                  child: Container(
-                                    padding: EdgeInsets.all(0),
-                                    child: ClienttList(), 
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProfilePage(),
                                   ),
-                                ),
-                               
-                              ],
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical:0),
+                                    child: Container(
+                                      padding: EdgeInsets.all(0),
+                                      child: ClienttList(),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
                             );
                           },
                         ),

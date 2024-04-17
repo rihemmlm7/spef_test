@@ -1,49 +1,90 @@
 import 'package:flutter/material.dart';
 
-class AddClientPage extends StatelessWidget {
+class AddClientPage extends StatefulWidget {
+  @override
+  _AddClientPageState createState() => _AddClientPageState();
+}
+
+class _AddClientPageState extends State<AddClientPage> {
+  String _status = 'client';
+
   @override
   Widget build(BuildContext context) {
+    // Get the screen size
+    final Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Client'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ListTile(
-              title: Text('Place Picker'),
-              trailing: Icon(Icons.place),
+              title: Text(
+                'Position',
+                style: TextStyle(color: Colors.white),
+              ),
+              tileColor: Colors.blue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              trailing: Icon(
+                Icons.place,
+                color: Colors.white,
+              ),
               onTap: () {
                 // Implement place picker functionality
               },
             ),
-            ListTile(
-              title: Text('Status'),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('Client'),
-                  Radio(
-                    value: 'client',
-                    groupValue: 'status',
-                    onChanged: (value) {
-                      // Handle radio button change
-                    },
-                  ),
-                  Text('Prospecté'),
-                  Radio(
-                    value: 'prospecté',
-                    groupValue: 'status',
-                    onChanged: (value) {
-                      // Handle radio button change
-                    },
-                  ),
-                ],
-              ),
+            SizedBox(height: screenSize.height * 0.02), // Adjusted height based on screen height
+            Text(
+              'Status',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            SizedBox(height: screenSize.height * 0.01), // Adjusted height based on screen height
+            Row(
+              children: [
+                Radio(
+                  value: 'client',
+                  groupValue: _status,
+                  onChanged: (value) {
+                    setState(() {
+                      _status = value.toString();
+                    });
+                  },
+                ),
+                Text('Client'),
+                SizedBox(width: screenSize.width * 0.4), // Adjusted width based on screen width
+                Radio(
+                  value: 'prospect',
+                  groupValue: _status,
+                  onChanged: (value) {
+                    setState(() {
+                      _status = value.toString();
+                    });
+                  },
+                ),
+                Text('Prospect'),
+              ],
+            ),
+            SizedBox(height: screenSize.height * 0.02),
+            Text(
+              'Type',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: screenSize.height * 0.01),
             DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide.none, 
+                ),
+              ),
               items: [
                 DropdownMenuItem<String>(
                   value: 'type1',
@@ -65,7 +106,6 @@ class AddClientPage extends StatelessWidget {
               onChanged: (value) {
                 // Handle dropdown selection
               },
-              decoration: InputDecoration(labelText: 'Name Type'),
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Nom'),
@@ -94,7 +134,7 @@ class AddClientPage extends StatelessWidget {
             TextFormField(
               decoration: InputDecoration(labelText: 'NIC'),
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: screenSize.height * 0.02), // Adjusted height based on screen height
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
