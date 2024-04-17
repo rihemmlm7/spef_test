@@ -18,7 +18,7 @@ class ClientListItem extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Image.network(
-                  'https://th.bing.com/th/id/R.fa0ca630a6a3de8e33e03a009e406acd?rik=UOMXfynJ2FEiVw&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2ff%2fa%2f0%2fc%2f1434020125875430376profile.png&ehk=73x7A%2fh2HgYZLT1q7b6vWMXl86IjYeDhub59EZ8hF14%3d&risl=&pid=ImgRaw&r=0',
+                  'https://picsum.photos/seed/9/600',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -49,7 +49,8 @@ class ClientListItem extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 10),          Stack(
+          SizedBox(width: 10), // Add space between text and progress
+          Stack(
             children: [
               SizedBox(
                 width: 40,
@@ -75,7 +76,8 @@ class ClientListItem extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(width: 10),          ElevatedButton.icon(
+          SizedBox(width: 10), // Add space between progress and button
+          ElevatedButton.icon(
             onPressed: () {
               print('Button pressed ...');
             },
