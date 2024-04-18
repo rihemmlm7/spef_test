@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/DocumentPage.dart';
+import 'package:spef/pages/Formulair.dart';
 
 class HistoriqueProfile extends StatelessWidget {
   @override
@@ -90,7 +91,7 @@ class HistoriqueProfile extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          DocumentPage()), // Navigate to the DocumentPage
+                                          Formulaire()), // Navigate to the DocumentPage
                                 );
                               },
                               style: ButtonStyle(

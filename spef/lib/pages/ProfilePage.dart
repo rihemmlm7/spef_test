@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/HistoriqueProfile.dart';
-import 'EditProfile.dart';
+import 'package:spef/pages/add_client.dart';
+
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -38,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                EditProfile()), // Navigate to EditProfile screen
+                                AddClientPage()), // Navigate to EditProfile screen
                       );
                     },
                   ),
