@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:spef/components/HistoriqueProfile.dart';
+import 'EditProfile.dart'; 
 
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    final double avatarSize = screenWidth * 0.3; // Define the desired size
-
+    final double avatarSize = screenWidth * 0.3;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(
-            screenWidth * 0.1), // Use screenWidth for horizontal padding
+        padding: EdgeInsets.all(screenWidth * 0.1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -19,7 +19,7 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Material(
-                  color: Colors.grey[300], // Gray background color
+                  color: Colors.grey[300],
                   shape: CircleBorder(),
                   child: IconButton(
                     icon: Icon(Icons.arrow_back),
@@ -29,12 +29,15 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 Material(
-                  color: Colors.grey[300], // Gray background color
+                  color: Colors.grey[300],
                   shape: CircleBorder(),
                   child: IconButton(
                     icon: Icon(Icons.edit),
                     onPressed: () {
-                      // Implement edit profile functionality
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EditProfile()), // Navigate to EditProfile screen
+                      );
                     },
                   ),
                 ),
@@ -44,105 +47,73 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 children: [
                   CircleAvatar(
-                    radius: 60, // Set the desired size here
-                    backgroundImage: NetworkImage(
-                        'https://th.bing.com/th/id/R.fa0ca630a6a3de8e33e03a009e406acd?rik=UOMXfynJ2FEiVw&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2ff%2fa%2f0%2fc%2f1434020125875430376profile.png&ehk=73x7A%2fh2HgYZLT1q7b6vWMXl86IjYeDhub59EZ8hF14%3d&risl=&pid=ImgRaw&r=0'), // Add your profile picture URL here
+                    radius: 60,
+                    backgroundImage: NetworkImage('https://picsum.photos/seed/9/600'),
                   ),
-                  SizedBox(
-                      height: screenHeight *
-                          0.02), // Adjusted height based on screen height
+                  SizedBox(height: screenHeight * 0.02),
                   Text(
-                    'John Doe', // Add your name here
+                    'John Doe',
                     style: TextStyle(
                         fontSize: screenHeight * 0.03,
-                        fontWeight: FontWeight
-                            .bold), // Adjusted font size based on screen height
+                        fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
-                      height: screenHeight *
-                          0.03), // Adjusted height based on screen height
+                  SizedBox(height: screenHeight * 0.03),
                   FractionallySizedBox(
-                    widthFactor:
-                        1, // Adjust the width factor as needed (0.6 means 60% of the available width)
+                    widthFactor: 1,
                     child: Divider(
                       color: Colors.grey[300],
                       thickness: screenHeight * 0.002,
                     ),
                   ),
-                  SizedBox(
-                      height: screenHeight *
-                          0.03), // Adjusted height based on screen height
-                  // Icon with title and address
+                  SizedBox(height: screenHeight * 0.01),
                   ListTile(
-                     
-                    contentPadding: EdgeInsets
-                        .zero, // Set contentPadding to zero to control padding manually
-                    leading: Icon(Icons.location_on), // Icon
+                    contentPadding: EdgeInsets.zero,
+                    leading: Icon(Icons.location_on),
                     title: Padding(
-                      padding: const EdgeInsets.only(
-                          left:
-                              8.0), // Add left padding to create space between icon and title
+                      padding: const EdgeInsets.only(left: 8.0),
                       child: Text(
-                        'Address', // Title
-                        style: TextStyle(
-                            fontSize: screenHeight *
-                                0.025), // Adjusted font size based on screen height
+                        'Address',
+                        style: TextStyle(fontSize: screenHeight * 0.025),
                       ),
                     ),
                     subtitle: Padding(
-                      padding: const EdgeInsets.only(
-                          left:
-                              15.0), // Add left padding to create space between icon and address
-                      child: Text(
-                        '123 Street, City, Country', // Address
-                        style: TextStyle(
-                            fontSize: screenHeight *
-                                0.02), // Adjusted font size based on screen height
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                      height: screenHeight *
-                          0.03), 
-                  ListTile(
-                    contentPadding: EdgeInsets
-                        .zero, // Set contentPadding to zero to control padding manually
-                    leading: Icon(Icons.phone), // Icon
-                    title: Padding(
-                      padding: const EdgeInsets.only(
-                          left:
-                              8.0), // Add left padding to create space between icon and title
-                      child: Text(
-                        'Téléphone', // Title
-                        style: TextStyle(
-                            fontSize: screenHeight *
-                                0.025), // Adjusted font size based on screen height
-                      ),
-                    ),
-                    
-                    subtitle: Padding(
-                      padding: const EdgeInsets.only(
-                          left:
-                              15.0), // Add left padding to create space between icon and address
+                      padding: const EdgeInsets.only(left: 15.0),
                       child: Text(
                         '123 Street, City, Country',
-    
-                        style: TextStyle(
-                            fontSize: screenHeight *
-                                0.02), // Adjusted font size based on screen height
+                        style: TextStyle(fontSize: screenHeight * 0.02),
                       ),
                     ),
                   ),
-                    SizedBox(
-                      height: screenHeight *
-                          0.03), // Adjusted height based on screen height
+                  SizedBox(height: screenHeight * 0.03),
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: Icon(Icons.phone),
+                    title: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Téléphone',
+                        style: TextStyle(fontSize: screenHeight * 0.025),
+                      ),
+                    ),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                      child: Text(
+                        '123 Street, City, Country',
+                        style: TextStyle(fontSize: screenHeight * 0.02),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
                   FractionallySizedBox(
-                    widthFactor:
-                        1, // Adjust the width factor as needed (0.6 means 60% of the available width)
+                    widthFactor: 1,
                     child: Divider(
                       color: Colors.grey[300],
                       thickness: screenHeight * 0.002,
                     ),
+                  ),
+                  
+                  Expanded(
+                    child: HistoriqueProfile(),
                   ),
                 ],
               ),
