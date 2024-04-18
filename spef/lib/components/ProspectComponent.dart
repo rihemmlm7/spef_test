@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProspectList extends StatelessWidget {
+class ProspectComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +24,7 @@ class ProspectList extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 10), 
+          SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

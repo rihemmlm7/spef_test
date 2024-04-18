@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/ClienttList.dart';
-import 'package:spef/components/ProspectList.dart';
+import 'package:spef/components/ProspectComponent.dart';
 import 'package:spef/components/Searchcompo.dart';
 import 'package:spef/pages/ProfilePage.dart';
 
@@ -70,16 +70,15 @@ class ClientPage extends StatelessWidget {
                 Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.02),
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).size.height * 0.02),
                       child: CustomSearchWidget(
                         controller: TextEditingController(),
                         focusNode: FocusNode(),
-                        onChanged: (value) {
-
-                        },
+                        onChanged: (value) {},
                       ),
                     ),
-                    Expanded( // Move the Expanded widget here
+                    Expanded(
                       child: Container(
                         padding: EdgeInsets.all(2.0),
                         decoration: BoxDecoration(
@@ -87,7 +86,7 @@ class ClientPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: ListView.builder(
-                          itemCount: 29,
+                          itemCount: 1,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () {
@@ -101,13 +100,13 @@ class ClientPage extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(vertical:0),
+                                    padding: EdgeInsets.symmetric(vertical: 0),
                                     child: Container(
                                       padding: EdgeInsets.all(0),
-                                      child: ProspectList(),
+                                      child: ProspectComponent(),
                                     ),
                                   ),
-                                  Divider(color: Colors.black), // Add a black divider between items
+                                  Divider(color: Colors.black),
                                 ],
                               ),
                             );
@@ -120,13 +119,12 @@ class ClientPage extends StatelessWidget {
                 Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.02),
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).size.height * 0.02),
                       child: CustomSearchWidget(
                         controller: TextEditingController(),
                         focusNode: FocusNode(),
-                        onChanged: (value) {
-
-                        },
+                        onChanged: (value) {},
                       ),
                     ),
                     Expanded(
@@ -151,13 +149,12 @@ class ClientPage extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(vertical:0),
+                                    padding: EdgeInsets.symmetric(vertical: 0),
                                     child: Container(
                                       padding: EdgeInsets.all(0),
                                       child: ClienttList(),
                                     ),
                                   ),
-
                                 ],
                               ),
                             );

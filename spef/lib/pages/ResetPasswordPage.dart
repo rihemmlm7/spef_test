@@ -21,9 +21,7 @@ class ResetPasswordPage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                 
-                },
+                onPressed: () {},
                 child: Text('motpass'),
               ),
             ],

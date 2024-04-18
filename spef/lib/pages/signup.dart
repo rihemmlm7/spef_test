@@ -41,7 +41,6 @@ class _SignUpPageState extends State<SignUpPage> {
           _passwordController.text.isNotEmpty &&
           _confirmPasswordController.text.isNotEmpty;
 
-
       _nameError = '';
       _prenomError = '';
       _emailError = '';
@@ -75,7 +74,6 @@ class _SignUpPageState extends State<SignUpPage> {
     });
 
     if (_allFieldsFilled && _passwordsMatch && _emailError.isEmpty) {
-
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -265,7 +263,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                      
                       SizedBox(height: 36),
                       Container(
                         width: double.infinity,
@@ -321,24 +318,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       SizedBox(height: 60),
                     ],
-                    
-                    
                   ),
-                 
-                 
                 ),
-                
               ),
-              
             ],
-            
           ),
-          
         ),
-
-        
       ),
-      
     );
   }
 }

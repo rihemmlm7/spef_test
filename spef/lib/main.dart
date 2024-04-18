@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import './pages/splashScreen.dart'; 
-
-
+import './pages/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
- const MyApp({Key? key});
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +15,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber,
         scaffoldBackgroundColor: const Color(0xFFE8E8E8),
       ),
-      debugShowCheckedModeBanner: false, 
-      home: SplashWidget(), 
+      debugShowCheckedModeBanner: false,
+      home: SplashWidget(),
     );
   }
 }

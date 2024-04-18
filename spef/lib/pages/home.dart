@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spef/pages/ClientVisitPage.dart';
 import 'package:spef/pages/add_client.dart';
 
 import 'client.dart';
@@ -33,9 +34,81 @@ class _HomeState extends State<Home> {
         child: Icon(Icons.add),
         backgroundColor: Colors.amber,
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AddClientPage()),
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.close),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ClientVisitPage()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              minimumSize: Size(120, 50),
+                            ),
+                            child: Text(
+                              'Visit',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddClientPage()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              minimumSize: Size(120, 50),
+                            ),
+                            child: Text(
+                              'Prospect',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
           );
         },
         shape: CircleBorder(),
@@ -69,7 +142,8 @@ class _HomeState extends State<Home> {
                         Text(
                           'Dashboard',
                           style: TextStyle(
-                            color: currentTab == 0 ? Colors.white : Colors.black,
+                            color:
+                                currentTab == 0 ? Colors.white : Colors.black,
                           ),
                         ),
                       ],
@@ -93,7 +167,8 @@ class _HomeState extends State<Home> {
                         Text(
                           'Client',
                           style: TextStyle(
-                            color: currentTab == 1 ? Colors.white : Colors.black,
+                            color:
+                                currentTab == 1 ? Colors.white : Colors.black,
                           ),
                         ),
                       ],
@@ -122,7 +197,8 @@ class _HomeState extends State<Home> {
                         Text(
                           'History',
                           style: TextStyle(
-                            color: currentTab == 2 ? Colors.white : Colors.black,
+                            color:
+                                currentTab == 2 ? Colors.white : Colors.black,
                           ),
                         ),
                       ],
@@ -146,7 +222,8 @@ class _HomeState extends State<Home> {
                         Text(
                           'Message',
                           style: TextStyle(
-                            color: currentTab == 3 ? Colors.white : Colors.black,
+                            color:
+                                currentTab == 3 ? Colors.white : Colors.black,
                           ),
                         ),
                       ],

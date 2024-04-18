@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spef/pages/Formulair.dart';
 
 class AddClientPage extends StatefulWidget {
   @override
@@ -6,18 +7,16 @@ class AddClientPage extends StatefulWidget {
 }
 
 class _AddClientPageState extends State<AddClientPage> {
-  String _selectedType = 'type1'; // Set default value here
-
+  String _selectedType = 'type1';
   String _status = 'client';
 
   @override
   Widget build(BuildContext context) {
-    // Get the screen size
     final Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Client'),
+        title: Text('Fiche de Client Prospecté'),
         backgroundColor: Colors.amber,
       ),
       body: SingleChildScrollView(
@@ -38,16 +37,14 @@ class _AddClientPageState extends State<AddClientPage> {
                 Icons.place,
                 color: Colors.white,
               ),
-              onTap: () {
-                // Implement place picker functionality
-              },
+              onTap: () {},
             ),
-            SizedBox(height: screenSize.height * 0.02), // Adjusted height based on screen height
+            SizedBox(height: screenSize.height * 0.02),
             Text(
               'Status',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: screenSize.height * 0.01), // Adjusted height based on screen height
+            SizedBox(height: screenSize.height * 0.01),
             Row(
               children: [
                 Radio(
@@ -61,7 +58,7 @@ class _AddClientPageState extends State<AddClientPage> {
                   },
                 ),
                 Text('Client'),
-                SizedBox(width: screenSize.width / 2.66), // Adjusted width based on screen width
+                SizedBox(width: screenSize.width / 2.66),
                 Radio(
                   activeColor: Colors.blue,
                   value: 'prospect',
@@ -219,27 +216,34 @@ class _AddClientPageState extends State<AddClientPage> {
                 ),
               ),
             ),
-            SizedBox(height: screenSize.height * 0.02), // Adjusted height based on screen height
+            SizedBox(height: screenSize.height * 0.02),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle cancel button press
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
                   },
-                  child: Text('Annuler'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle validate button press
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.amber),
+                  child: Text(
+                    'Annuler',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Formulaire()),
+                    );
+                  },
                   child: Text(
                     'Valider',
                     style: TextStyle(
                       color: Colors.black,
+                      fontSize: 16,
                     ),
                   ),
                 ),

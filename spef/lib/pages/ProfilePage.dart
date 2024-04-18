@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/HistoriqueProfile.dart';
-import 'EditProfile.dart'; 
+import 'EditProfile.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -36,7 +36,9 @@ class ProfilePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => EditProfile()), // Navigate to EditProfile screen
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                EditProfile()), // Navigate to EditProfile screen
                       );
                     },
                   ),
@@ -48,7 +50,8 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 60,
-                    backgroundImage: NetworkImage('https://picsum.photos/seed/9/600'),
+                    backgroundImage:
+                        NetworkImage('https://picsum.photos/seed/9/600'),
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   Text(
@@ -111,7 +114,6 @@ class ProfilePage extends StatelessWidget {
                       thickness: screenHeight * 0.002,
                     ),
                   ),
-                  
                   Expanded(
                     child: HistoriqueProfile(),
                   ),

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/DocumentPage.dart';
 
-
 class HistoriqueProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    int numberOfDocuments = 5; 
+    int numberOfDocuments = 5;
     return ListView.builder(
       padding: EdgeInsets.zero,
       scrollDirection: Axis.vertical,
-      itemCount: 5, 
+      itemCount: 5,
       itemBuilder: (context, index) {
-        String textToShow = index % 2 == 0 ? 'Visite' : 'Prospect'; 
+        String textToShow = index % 2 == 0 ? 'Visite' : 'Prospect';
 
         return Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
@@ -19,20 +18,20 @@ class HistoriqueProfile extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DocumentPage()), 
+                MaterialPageRoute(builder: (context) => DocumentPage()),
               );
             },
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
                   left: BorderSide(
-                    color: Colors.yellow, 
-                    width: 4, 
+                    color: Colors.yellow,
+                    width: 4,
                   ),
                 ),
               ),
               child: SizedBox(
-                height: 125, 
+                height: 125,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -50,7 +49,7 @@ class HistoriqueProfile extends StatelessWidget {
                           ),
                         ),
                         child: Image.network(
-                          'https://picsum.photos/seed/$index/600', 
+                          'https://picsum.photos/seed/$index/600',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -77,23 +76,30 @@ class HistoriqueProfile extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: 'Readex Pro',
                                 letterSpacing: 0,
-                                color: textToShow == 'Visite' ? Colors.yellow : Colors.grey, // Conditional text color
+                                color: textToShow == 'Visite'
+                                    ? Colors.yellow
+                                    : Colors.grey, // Conditional text color
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(8), 
+                            padding: EdgeInsets.all(8),
                             child: ElevatedButton(
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => DocumentPage()), // Navigate to the DocumentPage
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DocumentPage()), // Navigate to the DocumentPage
                                 );
                               },
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(Colors.white), // White background
-                                foregroundColor: MaterialStateProperty.all(Colors.black), // Black text color
-                                side: MaterialStateProperty.all(BorderSide(color: Colors.black)), // Black border
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.white), // White background
+                                foregroundColor: MaterialStateProperty.all(
+                                    Colors.black), // Black text color
+                                side: MaterialStateProperty.all(BorderSide(
+                                    color: Colors.black)), // Black border
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -113,7 +119,7 @@ class HistoriqueProfile extends StatelessWidget {
                                   ),
                                   SizedBox(width: 8),
                                   Text(
-                                    '$numberOfDocuments', 
+                                    '$numberOfDocuments',
                                     style: TextStyle(
                                       fontFamily: 'Readex Pro',
                                       letterSpacing: 0,

@@ -17,27 +17,21 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only( bottom: 0),
-        width: MediaQuery.of(context). size.width / 1,
-        
+        padding: EdgeInsets.only(bottom: 0),
+        width: MediaQuery.of(context).size.width / 1,
         decoration: LoginPageStyle.containerDecoration(),
         child: Center(
           child: SingleChildScrollView(
-            
             child: Container(
-              
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  
                   Container(
                     padding: EdgeInsets.only(top: 200, bottom: 9),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        
                         Container(
-                          
                           width: 65,
                           height: 59,
                           decoration: BoxDecoration(
@@ -48,7 +42,9 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-                        SizedBox(width: MediaQuery.of(context). size.width /30 ,),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 30,
+                        ),
                         Text(
                           'SPEF',
                           style: LoginPageStyle.titleTextStyle(),
@@ -56,9 +52,10 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context). size.height / 20,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 20,
+                  ),
                   Container(
-                    
                     decoration: LoginPageStyle.textFieldDecoration(),
                     child: Padding(
                       padding: const EdgeInsets.all(10),
@@ -76,7 +73,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: MediaQuery.of(context). size.height / 25,),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 25,
+                          ),
                           Text(
                             'Email',
                             style: TextStyle(
@@ -96,7 +95,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: MediaQuery.of(context). size.height / 25,),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 25,
+                          ),
                           Text(
                             'Mot de passe',
                             style: TextStyle(
@@ -133,7 +134,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: MediaQuery.of(context). size.height / 40,),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 40,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -186,7 +189,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: MediaQuery.of(context). size.height / 38,),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 38,
+                          ),
                           Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -203,7 +208,8 @@ class _LoginPageState extends State<LoginPage> {
                                 );
                               },
                               child: Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 14, 0.6, 14),
+                                padding:
+                                    const EdgeInsets.fromLTRB(0, 14, 0.6, 14),
                                 child: Text(
                                   'Connexion',
                                   style: TextStyle(
@@ -216,7 +222,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: MediaQuery.of(context). size.height / 38,),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 38,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -229,7 +237,9 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              SizedBox(height: MediaQuery.of(context). size.height / 60,),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height / 60,
+                              ),
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -251,7 +261,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: MediaQuery.of(context). size.height / 10,),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 10,
+                          ),
                         ],
                       ),
                     ),

@@ -4,7 +4,7 @@ class ClienttList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-       padding: EdgeInsets.all(8),
+      padding: EdgeInsets.all(8),
       child: Container(
         decoration: BoxDecoration(
           color: Color(0xFFDEE8EB),
@@ -30,7 +30,7 @@ class ClienttList extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 10), 
+            SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

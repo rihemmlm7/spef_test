@@ -17,7 +17,7 @@ class _NotifCompState extends State<NotifComp> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 2), 
+          SizedBox(height: 2),
           _buildItem(
             bgColor: Colors.white,
             width: screenWidth * 0.9,
@@ -25,8 +25,7 @@ class _NotifCompState extends State<NotifComp> {
             prospect: 'Prospect',
             time: 'Il y a 30 min',
             newClient: '🌟 Nouveau client:',
-            description:
-                'Un nouveau prospect, [Nom de client], a été ajouté.',
+            description: 'Un nouveau prospect, [Nom de client], a été ajouté.',
           ),
         ],
       ),
