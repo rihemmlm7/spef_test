@@ -44,6 +44,8 @@ class CustomSearchWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(100),
           borderSide: BorderSide.none,
         ),
+        // Adjust the height of the search field by setting content padding
+        contentPadding: EdgeInsets.symmetric(vertical: 15.0), // Adjust this value as needed
       ),
       style: TextStyle(
         fontFamily: 'Open Sans',

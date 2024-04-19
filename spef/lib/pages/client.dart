@@ -5,12 +5,16 @@ import 'package:spef/components/Searchcompo.dart';
 import 'package:spef/pages/ProfilePage.dart';
 
 class ClientPage extends StatelessWidget {
+  final int initialTabIndex;
+
+  ClientPage({required this.initialTabIndex});
   final int clientsTab1 = 10;
   final int clientsTab2 = 20;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: initialTabIndex,
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -80,7 +84,7 @@ class ClientPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(2.0),
+                        padding: EdgeInsets.all(15.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
@@ -129,7 +133,7 @@ class ClientPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(2.0),
+                        padding: EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),

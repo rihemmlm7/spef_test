@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:spef/components/ClienttList.dart';
 
 import 'package:spef/components/Searchcompo.dart';
-import 'package:spef/pages/ProfilePage.dart';
+import 'package:spef/pages/Formulair.dart';
+
 
 class ClientVisitPage extends StatelessWidget {
   @override
@@ -43,7 +44,7 @@ class ClientVisitPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProfilePage(),
+                            builder: (context) => Formulaire(),
                           ),
                         );
                       },

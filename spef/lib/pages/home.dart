@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
   int currentTab = 0;
   final List<Widget> screens = [
     DashboardPage(),
-    ClientPage(),
+    ClientPage(initialTabIndex: 0,),
     HistoryPage(),
     MessagePage(),
   ];
@@ -153,7 +153,7 @@ class _HomeState extends State<Home> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = ClientPage();
+                        currentScreen = ClientPage(initialTabIndex: 0,);
                         currentTab = 1;
                       });
                     },

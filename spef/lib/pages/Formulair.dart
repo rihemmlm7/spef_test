@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spef/components/Doc.dart';
+import 'package:spef/components/Media.dart';
+import 'package:spef/components/Questionnaire.dart';
 
 class Formulaire extends StatelessWidget {
   final int clientsTab1 = 10;
@@ -96,28 +99,14 @@ class Formulaire extends StatelessWidget {
             ),
             child: TabBarView(
               children: [
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: screenHeight * 0.02),
-                    ),
-                  ],
+                SizedBox(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Questionnaire(),
                 ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: screenHeight * 0.02),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: screenHeight * 0.02),
-                    ),
-                  ],
-                ),
-              ],
+                _buildTab2Content(context),
+                _buildTab3Content(context),
+              ], // Moved the closing bracket to the correct position
             ),
           ),
         ),
@@ -142,6 +131,66 @@ class Formulaire extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTab2Content(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          DateTime date = DateTime.now().add(Duration(days: index));
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Column(
+              children: [
+                DocumentItem(
+                  documentName: 'Document ${index + 1}',
+                  date: date,
+                ),
+                Divider(
+                  color: Colors.grey,
+                  thickness: 1.0,
+                  height: 3,
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+  
+  Widget _buildTab3Content(BuildContext context) {
+    return GridView.builder(
+      padding: EdgeInsets.zero,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        childAspectRatio: 1,
+      ),
+      scrollDirection: Axis.vertical,
+      itemCount: 6, // Example: 6 media items
+      itemBuilder: (context, index) {
+        return _buildMediaItem('https://picsum.photos/seed/${index * 100}/600');
+      },
+    );
+  }
+
+  Widget _buildMediaItem(String imageUrl) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Image.network(
+        imageUrl,
+        width: 300,
+        height: 200,
+        fit: BoxFit.cover,
       ),
     );
   }

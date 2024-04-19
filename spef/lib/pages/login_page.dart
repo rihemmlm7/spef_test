@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(top: 200, bottom: 9),
+                    padding: EdgeInsets.only(top: 200, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     decoration: LoginPageStyle.textFieldDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(25),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Color(0xFF2B2B2B),
-                                fontFamily: 'Roboto',
+                                
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(
                               fontSize: 18,
                               color: Color(0xFF2B2B2B),
-                              fontFamily: 'Roboto',
+                              
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                               hintStyle: TextStyle(
                                 fontSize: 15,
                                 color: Color(0xFFADADAD),
-                                fontFamily: 'Quicksand',
+                                
                               ),
                             ),
                           ),
@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(
                               fontSize: 18,
                               color: Color(0xFF2B2B2B),
-                              fontFamily: 'Quicksand',
+                              
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                               hintStyle: TextStyle(
                                 fontSize: 15,
                                 color: Color(0xFFADADAD),
-                                fontFamily: 'Quicksand',
+                                
                               ),
                               suffixIcon: GestureDetector(
                                 onTap: () {
@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: Color(0xFF707070),
-                                      fontFamily: 'Quicksand',
+                                      
                                       fontWeight: FontWeight.normal,
                                     ),
                                   ),
@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: Colors.blue,
-                                      fontFamily: 'Quicksand',
+                                      
                                       fontWeight: FontWeight.normal,
                                     ),
                                   ),
@@ -209,13 +209,13 @@ class _LoginPageState extends State<LoginPage> {
                               },
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.fromLTRB(0, 14, 0.6, 14),
+                                    const EdgeInsets.fromLTRB(0, 10, 0, 10),
                                 child: Text(
                                   'Connexion',
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.white,
-                                    fontFamily: 'Quicksand',
+                                    
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -233,7 +233,7 @@ class _LoginPageState extends State<LoginPage> {
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.black,
-                                  fontFamily: 'Quicksand',
+                                  
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
@@ -249,12 +249,13 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   );
                                 },
+                                
                                 child: Text(
-                                  'Inscrivez-vous ici',
+                                  ' Inscrivez-vous ici',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Color(0xFFFBCA19),
-                                    fontFamily: 'Quicksand',
+                                    
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
@@ -262,7 +263,7 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height / 10,
+                            height: MediaQuery.of(context).size.height / 9,
                           ),
                         ],
                       ),

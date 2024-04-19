@@ -100,16 +100,17 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: TextStyle(
                       fontSize: 25,
                       color: Color(0xFF2B2B2B),
-                      fontFamily: 'Quicksand',
+    
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
               ),
+              SizedBox(height: 25),
               Container(
                 decoration: LoginPageStyle.textFieldDecoration(),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(19, 21.3, 19.5, 50),
+                  padding: const EdgeInsets.fromLTRB(30, 30, 30, 40),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -119,7 +120,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(
                           fontSize: 18,
                           color: Color(0xFF2B2B2B),
-                          fontFamily: 'Quicksand',
+                          
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -130,7 +131,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           hintStyle: TextStyle(
                             fontSize: 15,
                             color: Color(0xFFADADAD),
-                            fontFamily: 'Quicksand',
+                            
                           ),
                           errorText: _nameError.isNotEmpty ? _nameError : null,
                         ),
@@ -141,7 +142,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(
                           fontSize: 18,
                           color: Color(0xFF2B2B2B),
-                          fontFamily: 'Quicksand',
+                          
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -152,7 +153,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           hintStyle: TextStyle(
                             fontSize: 15,
                             color: Color(0xFFADADAD),
-                            fontFamily: 'Quicksand',
+                            
                           ),
                           errorText:
                               _prenomError.isNotEmpty ? _prenomError : null,
@@ -164,7 +165,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(
                           fontSize: 18,
                           color: Color(0xFF2B2B2B),
-                          fontFamily: 'Quicksand',
+                          
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -176,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           hintStyle: TextStyle(
                             fontSize: 15,
                             color: Color(0xFFADADAD),
-                            fontFamily: 'Quicksand',
+                            
                           ),
                           errorText:
                               _emailError.isNotEmpty ? _emailError : null,
@@ -188,7 +189,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(
                           fontSize: 18,
                           color: Color(0xFF2B2B2B),
-                          fontFamily: 'Quicksand',
+                          
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -200,7 +201,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           hintStyle: TextStyle(
                             fontSize: 15,
                             color: Color(0xFFADADAD),
-                            fontFamily: 'Quicksand',
+                            
                           ),
                           errorText:
                               _passwordError.isNotEmpty ? _passwordError : null,
@@ -228,7 +229,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(
                           fontSize: 18,
                           color: Color(0xFF2B2B2B),
-                          fontFamily: 'Quicksand',
+                          
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -240,7 +241,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           hintStyle: TextStyle(
                             fontSize: 15,
                             color: Color(0xFFADADAD),
-                            fontFamily: 'Quicksand',
+                            
                           ),
                           errorText: _confirmPasswordError.isNotEmpty
                               ? _confirmPasswordError
@@ -273,13 +274,13 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: TextButton(
                           onPressed: _validateAndSignUp,
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 14, 0.6, 14),
+                            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                             child: Text(
                               'S\'inscrire',
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,
-                                fontFamily: 'Quicksand',
+                                
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -295,7 +296,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.black,
-                              fontFamily: 'Quicksand',
+                              
                               fontWeight: FontWeight.normal,
                             ),
                           ),
@@ -309,7 +310,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               style: TextStyle(
                                 fontSize: 12,
                                 color: Color(0xFFFBCA19),
-                                fontFamily: 'Quicksand',
+                                
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
