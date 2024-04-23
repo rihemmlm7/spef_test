@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/HistoriqueProfile.dart';
-import 'package:spef/pages/add_client.dart';
+import 'package:spef/pages/FicheClientPros.dart';
 
 
 class ProfilePage extends StatelessWidget {

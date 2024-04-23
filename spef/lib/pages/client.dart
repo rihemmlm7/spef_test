@@ -90,7 +90,7 @@ class ClientPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: ListView.builder(
-                          itemCount: 1,
+                          itemCount: 20,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () {

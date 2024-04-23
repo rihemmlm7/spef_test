@@ -1,6 +1,9 @@
+//DashComponent
 import 'package:flutter/material.dart';
 
 int count = 0;
+
+
 
 class MyComponent extends StatelessWidget {
   @override
@@ -15,17 +18,17 @@ class MyComponent extends StatelessWidget {
             children: [
               _buildDashboardCard(
                 context,
-                Colors.white,
+                Colors.white, // Change to any desired color
                 120,
                 count,
                 Icons.people,
                 Colors.blue,
                 'Total des visite',
               ),
-              SizedBox(width: MediaQuery.of(context).size.width / 23),
+              SizedBox(width: MediaQuery.of(context).size.width / 40),
               _buildDashboardCard(
                 context,
-                Colors.white,
+                Colors.white, // Change to any desired color
                 120,
                 count,
                 Icons.remove_red_eye,
@@ -40,17 +43,17 @@ class MyComponent extends StatelessWidget {
             children: [
               _buildDashboardCard(
                 context,
-                Colors.white,
+                Colors.white, // Change to any desired color
                 120,
                 count,
                 Icons.car_repair,
                 Colors.orange,
                 'Tournées du jour',
               ),
-              SizedBox(width: MediaQuery.of(context).size.width / 23),
+              SizedBox(width: MediaQuery.of(context).size.width / 40),
               _buildDashboardCard(
                 context,
-                Colors.white,
+                Colors.white, // Change to any desired color
                 120,
                 count,
                 Icons.person,
@@ -66,16 +69,18 @@ class MyComponent extends StatelessWidget {
 
   Widget _buildDashboardCard(
     BuildContext context,
-    Color bgColor,
+    Color bgColor, // Pass the background color
     double width,
     int count,
     IconData icon,
     Color iconColor,
     String itemName,
   ) {
+    print("Background color: $bgColor"); // Print the background color for debugging
     return Expanded(
       child: Card(
         elevation: 3,
+        color: bgColor, // Set the background color
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

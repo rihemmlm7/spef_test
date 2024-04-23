@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/ClienttList.dart';
-
 import 'package:spef/components/Searchcompo.dart';
+import 'package:spef/pages/FicheClientPros.dart';
 import 'package:spef/pages/Formulair.dart';
-
 
 class ClientVisitPage extends StatelessWidget {
   @override
@@ -37,7 +36,7 @@ class ClientVisitPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: ListView.builder(
-                  itemCount: 3,
+                  itemCount: 30,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
@@ -67,6 +66,20 @@ class ClientVisitPage extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddClientPage(),
+            ),
+          );
+        },
+        backgroundColor: Colors.amber,
+        child: Icon(Icons.person_add, color: Colors.white),
+        shape: CircleBorder(),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

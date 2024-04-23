@@ -87,7 +87,7 @@ class _NotifCompState extends State<NotifComp> {
                   ),
                   Icon(
                     expanded ? Icons.remove : Icons.add,
-                    color: Colors.black,
+                    color: Colors.grey[600],
                   ),
                 ],
               ),

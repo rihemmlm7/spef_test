@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spef/pages/ClientVisitPage.dart';
-import 'package:spef/pages/add_client.dart';
+import 'package:spef/pages/FicheClientPros.dart';
 
 import 'client.dart';
 import 'dashboard.dart';
@@ -31,8 +31,9 @@ class _HomeState extends State<Home> {
         bucket: bucket,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(Icons.person_add, color: Colors.white),
         backgroundColor: Colors.amber,
+        
         onPressed: () {
           showDialog(
             context: context,
@@ -195,7 +196,7 @@ class _HomeState extends State<Home> {
                           color: currentTab == 2 ? Colors.white : Colors.black,
                         ),
                         Text(
-                          'History',
+                          'Historique',
                           style: TextStyle(
                             color:
                                 currentTab == 2 ? Colors.white : Colors.black,
@@ -207,10 +208,11 @@ class _HomeState extends State<Home> {
                   MaterialButton(
                     minWidth: 40,
                     onPressed: () {
-                      setState(() {
-                        currentScreen = MessagePage();
-                        currentTab = 3;
-                      });
+                      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MessagePage()),
+    );
+                      
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
