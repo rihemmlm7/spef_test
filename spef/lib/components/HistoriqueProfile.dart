@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:spef/pages/Formulair.dart';
 
 class HistoriqueProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int numberOfDocuments = 5;
-    return SingleChildScrollView( // Wrap with SingleChildScrollView
+    return SingleChildScrollView(
       child: Column(
         children: List.generate(5, (index) {
           String textToShow = index % 2 == 0 ? 'Visite' : 'Prospect';
@@ -77,7 +76,7 @@ class HistoriqueProfile extends StatelessWidget {
                                   letterSpacing: 0,
                                   color: textToShow == 'Visite'
                                       ? Colors.yellow
-                                      : Colors.grey, // Conditional text color
+                                      : Colors.grey,
                                 ),
                               ),
                             ),
@@ -85,90 +84,94 @@ class HistoriqueProfile extends StatelessWidget {
                               padding: EdgeInsets.all(8),
                               child: Row(
                                 children: [
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Formulaire(),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => Formulaire(),
+                                            ),
+                                          );
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all(
+                                              Colors.white),
+                                          foregroundColor: MaterialStateProperty.all(
+                                              Colors.black),
+                                          side: MaterialStateProperty.all(
+                                              BorderSide(
+                                                  color: Colors.grey)),
                                         ),
-                                      );
-                                    },
-                                    style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(
-                                          Colors.white), // White background
-                                      foregroundColor: MaterialStateProperty.all(
-                                          Colors.black), // Black text color
-                                      side: MaterialStateProperty.all(
-                                          BorderSide(
-                                              color: Colors.grey)), // Black border
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.description,
-                                          color: Colors.red,
-                                          size: 20,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Icon(
+                                              Icons.description,
+                                              color: Colors.red,
+                                              size: 20,
+                                            ),
+                                            SizedBox(width: 8),
+                                            Flexible(
+                                              child: Text(
+                                                'Document +$numberOfDocuments',
+                                                style: TextStyle(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0,
+                                                ),
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        SizedBox(width: 8),
-                                        Text(
-                                          'Document',
-                                          style: TextStyle(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0,
-                                          ),
-                                        ),
-                                        SizedBox(width: 8),
-                                        Text(
-                                          '+$numberOfDocuments',
-                                          style: TextStyle(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0,
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(width: 10), // Space between buttons
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      // Add your action here for the second button
-                                    },
-                                    style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(
-                                          Colors.white), // White background
-                                      foregroundColor: MaterialStateProperty.all(
-                                          Colors.black), // Black text color
-                                      side: MaterialStateProperty.all(
-                                          BorderSide(
-                                              color: Colors.grey)), // Black border
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.description,
-                                          color: Colors.blue, // Change color if needed
-                                          size: 20,
+                                  SizedBox(width: 10),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          // Add your action here for the second button
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all(
+                                              Colors.white),
+                                          foregroundColor: MaterialStateProperty.all(
+                                              Colors.black),
+                                          side: MaterialStateProperty.all(
+                                              BorderSide(
+                                                  color: Colors.grey)),
                                         ),
-                                        SizedBox(width: 8),
-                                        Text(
-                                          ' Document',
-                                          style: TextStyle(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0,
-                                          ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Icon(
+                                              Icons.description,
+                                              color: Colors.blue,
+                                              size: 20,
+                                            ),
+                                            SizedBox(width: 8),
+                                            Flexible(
+                                              child: Text(
+                                                'Document +$numberOfDocuments',
+                                                style: TextStyle(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0,
+                                                ),
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        SizedBox(width: 8),
-                                        Text(
-                                          '+$numberOfDocuments',
-                                          style: TextStyle(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0,
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                 ],
