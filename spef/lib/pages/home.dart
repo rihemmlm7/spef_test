@@ -32,7 +32,8 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.person_add, color: Colors.white),
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.red,
+        
         onPressed: () {
           showDialog(
             context: context,
@@ -125,7 +126,7 @@ class _HomeState extends State<Home> {
               Row(
                 children: <Widget>[
                   MaterialButton(
-                    minWidth: MediaQuery.of(context).size.width / 4,
+                    minWidth: 40,
                     onPressed: () {
                       setState(() {
                         currentScreen = DashboardPage();
@@ -150,7 +151,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   MaterialButton(
-                    minWidth: MediaQuery.of(context).size.width / 4,
+                    minWidth: 40,
                     onPressed: () {
                       setState(() {
                         currentScreen = ClientPage(initialTabIndex: 0,);
@@ -180,7 +181,7 @@ class _HomeState extends State<Home> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   MaterialButton(
-                    minWidth: MediaQuery.of(context).size.width / 4,
+                    minWidth: 40,
                     onPressed: () {
                       setState(() {
                         currentScreen = HistoryPage();
@@ -205,12 +206,13 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   MaterialButton(
-                    minWidth: MediaQuery.of(context).size.width / 4,
+                    minWidth: 40,
                     onPressed: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MessagePage()),
-                      );
+      context,
+      MaterialPageRoute(builder: (context) => MessagePage()),
+    );
+                      
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

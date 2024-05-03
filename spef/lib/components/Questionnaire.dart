@@ -205,7 +205,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                       );
                     },
                     child: Text(
-                      'Enregistré',
+                      'valider',
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -219,7 +219,7 @@ class _QuestionnaireState extends State<Questionnaire> {
         ),
       ),
       floatingActionButton: Align(
-        alignment: Alignment.centerRight,
+        alignment: Alignment.bottomRight,
         child: PopupMenuButton(
           offset: Offset(-30, 40),
           itemBuilder: (BuildContext context) {

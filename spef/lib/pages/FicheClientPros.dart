@@ -303,38 +303,41 @@ class _AddClientPageState extends State<AddClientPage> {
                 ),
               ),
             ),
-            SizedBox(height: screenSize.height * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    'Annuler',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
+           
+          ],
+        ),
+      ),
+       bottomNavigationBar: BottomAppBar(
+       color: Color(0xFFE8E8E8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Annuler',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Formulaire()),
-                    );
-                  },
-                  child: Text(
-                    'Valider',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Formulaire()),
+                );
+              },
+              child: Text(
+                'Valider',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
                 ),
-              ],
+              ),
             ),
           ],
         ),
@@ -342,3 +345,4 @@ class _AddClientPageState extends State<AddClientPage> {
     );
   }
 }
+
