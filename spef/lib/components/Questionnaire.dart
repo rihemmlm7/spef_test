@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:spef/pages/client.dart';
 
 class Questionnaire extends StatefulWidget {
@@ -8,11 +7,11 @@ class Questionnaire extends StatefulWidget {
 }
 
 class _QuestionnaireState extends State<Questionnaire> {
-  bool? _checkboxValue1 = false;
-  bool? _checkboxValue2 = false;
-  bool? _checkboxValue3 = false;
-  String? _radioValue = 'Option 1';
-  String? _radioValue1 = 'Option 1';
+  bool _checkboxValue1 = false;
+  bool _checkboxValue2 = false;
+  bool _checkboxValue3 = false;
+  String _radioValue = 'Option 1';
+  String _radioValue1 = 'Option 1';
   TextEditingController _noteController = TextEditingController();
 
   @override
@@ -50,7 +49,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _radioValue1 = value as String?;
+                    _radioValue1 = value.toString();
                   });
                 },
               ),
@@ -61,7 +60,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _radioValue1 = value as String?;
+                    _radioValue1 = value.toString();
                   });
                 },
               ),
@@ -72,14 +71,14 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _radioValue1 = value as String?;
+                    _radioValue1 = value.toString();
                   });
                 },
               ),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  'Question 1',
+                  'Question 2',
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -91,7 +90,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _checkboxValue1 = value;
+                    _checkboxValue1 = value!;
                   });
                 },
                 controlAffinity: ListTileControlAffinity.leading,
@@ -102,7 +101,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _checkboxValue2 = value;
+                    _checkboxValue2 = value!;
                   });
                 },
                 controlAffinity: ListTileControlAffinity.leading,
@@ -113,7 +112,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _checkboxValue3 = value;
+                    _checkboxValue3 = value!;
                   });
                 },
                 controlAffinity: ListTileControlAffinity.leading,
@@ -121,7 +120,7 @@ class _QuestionnaireState extends State<Questionnaire> {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  'Question 1',
+                  'Question 3',
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -134,7 +133,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _radioValue = value as String?;
+                    _radioValue = value.toString();
                   });
                 },
               ),
@@ -145,7 +144,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _radioValue = value as String?;
+                    _radioValue = value.toString();
                   });
                 },
               ),
@@ -156,7 +155,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 activeColor: Colors.blue,
                 onChanged: (value) {
                   setState(() {
-                    _radioValue = value as String?;
+                    _radioValue = value.toString();
                   });
                 },
               ),
@@ -219,6 +218,69 @@ class _QuestionnaireState extends State<Questionnaire> {
           ),
         ),
       ),
+      floatingActionButton: Align(
+        alignment: Alignment.centerRight,
+        child: PopupMenuButton(
+          offset: Offset(-30, 40),
+          itemBuilder: (BuildContext context) {
+            return [
+              PopupMenuItem(
+                value: 'Choisir une photo ou une vidéo',
+                child: ListTile(
+                  title: Text(
+                    'Choisir une photo ou une vidéo',
+                    style: TextStyle(color: Colors.black), // Set text color to black
+                  ),
+                  leading: Icon(Icons.image),
+                ),
+              ),
+              PopupMenuItem(
+                value: 'Prendre une photo ou une vidéo',
+                child: ListTile(
+                  title: Text(
+                    'Prendre une photo ou une vidéo',
+                    style: TextStyle(color: Colors.black), // Set text color to black
+                  ),
+                  leading: Icon(Icons.camera_alt),
+                ),
+              ),
+              PopupMenuItem(
+                value: 'Choisir des documents',
+                child: ListTile(
+                  title: Text(
+                    'Choisir des documents',
+                    style: TextStyle(color: Colors.black), // Set text color to black
+                  ),
+                  leading: Icon(Icons.attach_file),
+                ),
+              ),
+              PopupMenuItem(
+                value: 'Numériser des documents',
+                child: ListTile(
+                  title: Text(
+                    'Numériser des documents',
+                    style: TextStyle(color: Colors.black), // Set text color to black
+                  ),
+                  leading: Icon(Icons.scanner),
+                ),
+              ),
+            ];
+          },
+          onSelected: (value) {
+            _selectMenuItem(value.toString());
+          },
+          child: FloatingActionButton(
+            onPressed: null,
+            backgroundColor: Colors.amber, // Set background color to amber
+            child: Icon(Icons.description, color: Colors.white), // Set icon color to white
+            shape: CircleBorder(), // Make it circular
+          ),
+        ),
+      ),
     );
+  }
+
+  void _selectMenuItem(String value) {
+    // Handle menu item selection
   }
 }
