@@ -173,9 +173,16 @@ class _QuestionnaireState extends State<Questionnaire> {
                 controller: _noteController,
                 decoration: InputDecoration(
                   hintText: 'Add a note...',
-                  border: OutlineInputBorder(),
+                   border: InputBorder.none,
                   filled: true,
                   fillColor: Color.fromRGBO(252, 227, 0, 0.2),
+                  contentPadding: EdgeInsets.all(10), // Optional: Adjust padding for the text field
+    // Add border radius
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(10.0), // Set border radius
+    ),
+                 
                 ),
                 maxLines: 15,
               ),
@@ -222,7 +229,7 @@ class _QuestionnaireState extends State<Questionnaire> {
       floatingActionButton: Align(
         alignment: Alignment.bottomRight,
         child: PopupMenuButton(
-          offset: Offset(-30, 40),
+          offset: Offset(-30, -170),
           itemBuilder: (BuildContext context) {
             return [
               PopupMenuItem(
