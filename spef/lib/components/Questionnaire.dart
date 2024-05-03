@@ -191,41 +191,7 @@ class _QuestionnaireState extends State<Questionnaire> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Color(0xFFE8E8E8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                'Annuler',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ClientPage(initialTabIndex: 1)),
-                );
-              },
-              child: Text(
-                'Valider',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+     
       floatingActionButton: Align(
         alignment: Alignment.bottomRight,
         child: PopupMenuButton(

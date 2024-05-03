@@ -47,7 +47,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Text(
                           'SPEF',
-                          style: LoginPageStyle.titleTextStyle(),
+                          style: LoginPageStyle.titleTextStyle().copyWith(
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.bold,
+  ),
                         ),
                       ],
                     ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spef/components/Doc.dart';
 import 'package:spef/components/Media.dart';
 import 'package:spef/components/Questionnaire.dart';
+import 'package:spef/pages/client.dart';
 
 class Formulaire extends StatelessWidget {
   final int clientsTab1 = 10;
@@ -106,8 +107,43 @@ class Formulaire extends StatelessWidget {
                 ),
                 _buildTab2Content(context),
                 _buildTab3Content(context),
-              ], // Moved the closing bracket to the correct position
+              ],
             ),
+          ),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Theme.of(context).bottomAppBarColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Annuler',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ClientPage(initialTabIndex: 1)),
+                  );
+                },
+                child: Text(
+                  'Valider',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
