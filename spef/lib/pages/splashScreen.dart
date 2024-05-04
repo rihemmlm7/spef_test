@@ -57,66 +57,67 @@ class _SplashWidgetState extends State<SplashWidget>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FadeTransition(
-                opacity: _imageAnimationController,
-                child: Center(
-                  child: Container(
-                    width: 140,
-                    height: 140,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SlideTransition(
-                          position: Tween<Offset>(
-                            begin: Offset(1, 0),
-                            end: Offset(-0.41, 0.01),
-                          ).animate(
-                            CurvedAnimation(
-                              parent: _imageAnimationController,
-                              curve: Curves.easeInOut,
-                            ),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.asset(
-                              'assets/logos/logospef.png',
-                              width: 140,
-                              height: 140,
-                              fit: BoxFit.fitWidth,
-                            ),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  FadeTransition(
+                    opacity: _imageAnimationController,
+                    child: SlideTransition(
+                      position: Tween<Offset>(
+                        begin: Offset(0, 0),
+                        end: Offset(-0.41, 0.01),
+                      ).animate(
+                        CurvedAnimation(
+                          parent: _imageAnimationController,
+                          curve: Curves.easeInOut,
+                        ),
+                      ),
+                      child: Container(
+                        width: 140,
+                        height: 140,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/logos/logospef.png',
+                            width: 140,
+                            height: 140,
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
-                        Positioned(
-                          top: 60,
-                          child: FadeTransition(
-                            opacity: _textAnimationController,
-                            child: SlideTransition(
-                              position: Tween<Offset>(
-                                begin: Offset(-1, 0),
-                                end: Offset(-50, 0),
-                              ).animate(
-                                CurvedAnimation(
-                                  parent: _textAnimationController,
-                                  curve: Curves.easeInOut,
-                                ),
-                              ),
-                              child: Text(
-                                'SPEF',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w900,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                  FadeTransition(
+                    opacity: _textAnimationController,
+                    child: SlideTransition(
+                      position: Tween<Offset>(
+                        begin: Offset(0, 0),
+                        end: Offset(0.41, -0.01),
+                      ).animate(
+                        CurvedAnimation(
+                          parent: _textAnimationController,
+                          curve: Curves.easeInOut,
+                        ),
+                      ),
+                      child: Container(
+                        width: 140,
+                        height: 140,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'SPEF',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
+              SizedBox(height: 20),
             ],
           ),
         ),
