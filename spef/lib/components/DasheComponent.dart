@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 int count = 0;
 
-
-
 class MyComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -58,7 +56,7 @@ class MyComponent extends StatelessWidget {
                 count,
                 Icons.person,
                 Colors.red,
-                'Client procpecté',
+                'Client prospecté',
               ),
             ],
           ),
@@ -76,7 +74,8 @@ class MyComponent extends StatelessWidget {
     Color iconColor,
     String itemName,
   ) {
-    print("Background color: $bgColor"); // Print the background color for debugging
+    double cardWidth = MediaQuery.of(context).size.width * 0.4; // Adjust card width based on screen size
+
     return Expanded(
       child: Card(
         elevation: 3,
@@ -85,6 +84,7 @@ class MyComponent extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Container(
+          width: cardWidth,
           padding: EdgeInsets.symmetric(vertical: 25, horizontal: 9),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +92,7 @@ class MyComponent extends StatelessWidget {
               Row(
                 children: [
                   Icon(icon, size: 40, color: iconColor),
-                  SizedBox(width: 80),
+                  SizedBox(width: cardWidth * 0.15), // Adjusted width based on screen size
                   Text(
                     count.toString(),
                     style: TextStyle(

@@ -20,295 +20,50 @@ class _AddClientPageState extends State<AddClientPage> {
         backgroundColor: Colors.amber,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(30.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ListTile(
-              title: Text(
-                'Position',
-                style: TextStyle(color: Colors.white),
-              ),
-              tileColor: Colors.blue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              trailing: Icon(
-                Icons.place,
-                color: Colors.white,
-              ),
+            buildListTile(
+              title: 'Position',
               onTap: () {},
+              icon: Icons.place,
+              color: Colors.blue,
             ),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'Status',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Row(
-              children: [
-                Radio(
-                  activeColor: Colors.blue,
-                  value: 'client',
-                  groupValue: _status,
-                  onChanged: (value) {
-                    setState(() {
-                      _status = value.toString();
-                    });
-                  },
-                ),
-                Text('Client'),
-                SizedBox(width: screenSize.width / 2.66),
-                Radio(
-                  activeColor: Colors.blue,
-                  value: 'prospect',
-                  groupValue: _status,
-                  onChanged: (value) {
-                    setState(() {
-                      _status = value.toString();
-                    });
-                  },
-                ),
-                Text('Prospect'),
-              ],
+            buildSectionTitle(title: 'Status'),
+            buildRadioGroup(
+              value1: 'client',
+              value2: 'prospect',
+              text1: 'Client',
+              text2: 'Prospect',
             ),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'Type',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            DropdownButtonFormField<String>(
-              value: _selectedType,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide.none,
-                ),
-              ),
-              items: [
-                DropdownMenuItem<String>(
-                  value: 'type1',
-                  child: Text('éleveur'),
-                ),
-                DropdownMenuItem<String>(
-                  value: 'type2',
-                  child: Text('Revendeur'),
-                ),
-                DropdownMenuItem<String>(
-                  value: 'type3',
-                  child: Text('coopérative'),
-                ),
-                DropdownMenuItem<String>(
-                  value: 'type4',
-                  child: Text('Revendeur et éleveur'),
-                ),
-              ],
-              onChanged: (value) {
-                setState(() {
-                  _selectedType = value!;
-                });
-              },
-            ),
+            buildSectionTitle(title: 'Type'),
+            buildDropdownButtonFormField(),
             SizedBox(height: screenSize.height * 0.02),
-            
-            Text(
-              'Nom',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 57,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Nom ',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+            buildTextInputField(label: 'Nom'),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'Prénom',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 57,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Prénom',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+            buildTextInputField(label: 'Prénom'),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'Nom de l\'Entreprise',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 50,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Nom de l\'Entreprise',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+            buildTextInputField(label: 'Nom de l\'Entreprise'),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'Téléphone',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 50,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Téléphone',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+            buildTextInputField(label: 'Téléphone'),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'Email',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 50,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+            buildTextInputField(label: 'Email'),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'RC',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 50,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'RC',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+            buildTextInputField(label: 'RC'),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'AI',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 50,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'AI',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+            buildTextInputField(label: 'AI'),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'NIF',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 50,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'NIF',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+            buildTextInputField(label: 'NIF'),
             SizedBox(height: screenSize.height * 0.02),
-            Text(
-              'NIC',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: screenSize.height * 0.01),
-            Container(
-              height: 50,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'NIC',
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintStyle: TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
-           
+            buildTextInputField(label: 'NIC'),
           ],
         ),
       ),
-       bottomNavigationBar: BottomAppBar(
-       color: Color(0xFFE8E8E8),
+      bottomNavigationBar: BottomAppBar(
+        color: Color(0xFFE8E8E8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -344,5 +99,134 @@ class _AddClientPageState extends State<AddClientPage> {
       ),
     );
   }
-}
 
+  Widget buildListTile({
+    required String title,
+    required VoidCallback onTap,
+    required IconData icon,
+    required Color color,
+  }) {
+    return ListTile(
+      title: Text(
+        title,
+        style: TextStyle(color: Colors.white),
+      ),
+      tileColor: color,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      trailing: Icon(
+        icon,
+        color: Colors.white,
+      ),
+      onTap: onTap,
+    );
+  }
+
+  Widget buildSectionTitle({required String title}) {
+    return Text(
+      title,
+      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+    );
+  }
+
+  Widget buildRadioGroup({
+    required String value1,
+    required String value2,
+    required String text1,
+    required String text2,
+  }) {
+    return Row(
+      children: [
+        Radio(
+          activeColor: Colors.blue,
+          value: value1,
+          groupValue: _status,
+          onChanged: (value) {
+            setState(() {
+              _status = value.toString();
+            });
+          },
+        ),
+        Text(text1),
+        SizedBox(width: MediaQuery.of(context).size.width / 2.66),
+        Radio(
+          activeColor: Colors.blue,
+          value: value2,
+          groupValue: _status,
+          onChanged: (value) {
+            setState(() {
+              _status = value.toString();
+            });
+          },
+        ),
+        Text(text2),
+      ],
+    );
+  }
+
+  Widget buildDropdownButtonFormField() {
+    return DropdownButtonFormField<String>(
+      value: _selectedType,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide.none,
+        ),
+      ),
+      items: [
+        DropdownMenuItem<String>(
+          value: 'type1',
+          child: Text('Éleveur'),
+        ),
+        DropdownMenuItem<String>(
+          value: 'type2',
+          child: Text('Revendeur'),
+        ),
+        DropdownMenuItem<String>(
+          value: 'type3',
+          child: Text('Coopérative'),
+        ),
+        DropdownMenuItem<String>(
+          value: 'type4',
+          child: Text('Revendeur et Éleveur'),
+        ),
+      ],
+      onChanged: (value) {
+        setState(() {
+          _selectedType = value!;
+        });
+      },
+    );
+  }
+
+  Widget buildTextInputField({required String label}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+        SizedBox(height: 8),
+        Container(
+          height: 50,
+          child: TextFormField(
+            decoration: InputDecoration(
+              hintText: label,
+              hintStyle: TextStyle(color: Colors.grey),
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

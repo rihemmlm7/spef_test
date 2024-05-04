@@ -37,7 +37,7 @@ class Formulaire extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: screenWidth * 0.04,
+                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -58,7 +58,7 @@ class Formulaire extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: screenWidth * 0.04,
+                          fontSize: 16.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -79,7 +79,7 @@ class Formulaire extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: screenWidth * 0.04,
+                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -163,7 +163,7 @@ class Formulaire extends StatelessWidget {
           '$number',
           style: TextStyle(
             color: Colors.black,
-            fontSize: MediaQuery.of(context).size.width * 0.04,
+             fontSize: 16.0,
             fontWeight: FontWeight.bold,
           ),
         ),

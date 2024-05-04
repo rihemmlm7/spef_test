@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spef/pages/client.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
+
 
 class Questionnaire extends StatefulWidget {
   @override
@@ -195,7 +198,7 @@ class _QuestionnaireState extends State<Questionnaire> {
       floatingActionButton: Align(
         alignment: Alignment.bottomRight,
         child: PopupMenuButton(
-          offset: Offset(-30, -170),
+          offset: Offset(-50, -190),
           itemBuilder: (BuildContext context) {
             return [
               PopupMenuItem(
@@ -254,7 +257,31 @@ class _QuestionnaireState extends State<Questionnaire> {
     );
   }
 
-  void _selectMenuItem(String value) {
-    // Handle menu item selection
+  void _selectMenuItem(String value) async {
+  final picker = ImagePicker();
+  late var pickedFile;
+
+  if (value == 'Choisir une photo ou une vidéo') {
+    pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  } else if (value == 'Prendre une photo ou une vidéo') {
+    pickedFile = await picker.pickImage(source: ImageSource.camera);
   }
+  late String filePath;
+
+  if (value == 'Choisir des documents') {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf', 'doc', 'docx'], // You can customize the allowed file types
+    );
+
+    if (result != null) {
+      filePath = result.files.single.path!;
+      // Handle the selected file path as needed, for example, you can display it or upload it
+    } else {
+      // User canceled the picker
+    }
+  }
+
+  }
+
 }

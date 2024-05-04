@@ -19,11 +19,11 @@ class _SplashWidgetState extends State<SplashWidget>
 
     _textAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1200),
+      duration: const Duration(milliseconds: 2000),
     );
     _imageAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1200),
+      duration: const Duration(milliseconds: 2000),
     );
 
     _startAnimations();
@@ -33,7 +33,7 @@ class _SplashWidgetState extends State<SplashWidget>
     _textAnimationController.forward();
     _imageAnimationController.forward();
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
@@ -65,7 +65,7 @@ class _SplashWidgetState extends State<SplashWidget>
                     child: SlideTransition(
                       position: Tween<Offset>(
                         begin: Offset(0, 0),
-                        end: Offset(-0.41, 0.01),
+                        end: Offset(-0.4, 0.01),
                       ).animate(
                         CurvedAnimation(
                           parent: _imageAnimationController,
@@ -75,14 +75,11 @@ class _SplashWidgetState extends State<SplashWidget>
                       child: Container(
                         width: 140,
                         height: 140,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(
-                            'assets/logos/logospef.png',
-                            width: 140,
-                            height: 140,
-                            fit: BoxFit.fitWidth,
-                          ),
+                        child: Image.asset(
+                          'assets/logos/logospef.png',
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),
@@ -92,7 +89,7 @@ class _SplashWidgetState extends State<SplashWidget>
                     child: SlideTransition(
                       position: Tween<Offset>(
                         begin: Offset(0, 0),
-                        end: Offset(0.41, -0.01),
+                        end: Offset(0.4, -0.01),
                       ).animate(
                         CurvedAnimation(
                           parent: _textAnimationController,
