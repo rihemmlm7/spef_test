@@ -5,7 +5,7 @@ import 'package:spef/components/Doc.dart';
 import 'package:spef/components/Media.dart';
 import 'package:spef/components/Questionnaire.dart';
 import 'package:spef/pages/client.dart';
-import 'package:spef/components/FileHandlingButton.dart'; 
+
 
 class Formulaire extends StatelessWidget {
   final int clientsTab1 = 10;
