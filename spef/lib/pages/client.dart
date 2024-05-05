@@ -71,108 +71,152 @@ class ClientPage extends StatelessWidget {
             ),
             child: TabBarView(
               children: [
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * 0.02),
-                      child: CustomSearchWidget(
-                        controller: TextEditingController(),
-                        focusNode: FocusNode(),
-                        onChanged: (value) {},
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        padding: EdgeInsets.all(15.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: ListView.builder(
-                          itemCount: 20,
-                          itemBuilder: (BuildContext context, int index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ProfilePage(),
-                                  ),
-                                );
-                              },
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 0),
-                                    child: Container(
-                                      padding: EdgeInsets.all(0),
-                                      child: ProspectComponent(),
-                                    ),
-                                  ),
-                                  Divider(color: Colors.black),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * 0.02),
-                      child: CustomSearchWidget(
-                        controller: TextEditingController(),
-                        focusNode: FocusNode(),
-                        onChanged: (value) {},
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        padding: EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: ListView.builder(
-                          itemCount: 29,
-                          itemBuilder: (BuildContext context, int index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ProfilePage(),
-                                  ),
-                                );
-                              },
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 0),
-                                    child: Container(
-                                      padding: EdgeInsets.all(0),
-                                      child: ClienttList(),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                _buildProspectTab(context),
+                _buildClientTab(context),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildProspectTab(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height * 0.02),
+          child: CustomSearchWidget(
+            controller: TextEditingController(),
+            focusNode: FocusNode(),
+            onChanged: (value) {},
+          ),
+        ),
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.all(15.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfilePage(),
+                      ),
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 0),
+                        child: Container(
+                          padding: EdgeInsets.all(0),
+                          child: ProspectComponent(),
+                        ),
+                      ),
+                      Divider(color: Colors.black),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildClientTab(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height * 0.02),
+          child: CustomSearchWidget(
+            controller: TextEditingController(),
+            focusNode: FocusNode(),
+            onChanged: (value) {},
+          ),
+        ),
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: ListView.builder(
+              itemCount: 29,
+              itemBuilder: (BuildContext context, int index) {
+                return Dismissible(
+                  key: Key(index.toString()), // Unique key for each item
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Icon(Icons.delete, color: Colors.white),
+                  ),
+                  direction: DismissDirection.endToStart,
+                  confirmDismiss: (DismissDirection direction) async {
+                    // Show a confirmation dialog
+                    return await showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          
+                          content: Text("Êtes-vous sûr de vouloir supprimer ce client ?"),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(false),
+                              child: Text("Anuller"),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(true),
+                              child: Text("Supprimer"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  onDismissed: (DismissDirection direction) {
+                    // Delete the client from your data source
+                    // Remove the item from your list
+                  },
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfilePage(),
+                        ),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 0),
+                          child: Container(
+                            padding: EdgeInsets.all(0),
+                            child: ClienttList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 
