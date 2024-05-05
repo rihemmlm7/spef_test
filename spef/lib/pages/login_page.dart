@@ -10,6 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  double _fontSize = 16.0; // Define a variable for font size
+
   bool _isChecked = false;
   bool _obscureText = true;
   bool _isLoading = false;
@@ -72,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Text(
                                   'Connectez-vous',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: _fontSize, // Use the variable here
                                     color: Color(0xFF2B2B2B),
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -84,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                               Text(
                                 'Email',
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: _fontSize, // Use the variable here
                                   color: Color(0xFF2B2B2B),
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -93,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                                 decoration: InputDecoration(
                                   hintText: 'Entrez votre adresse e-mail',
                                   hintStyle: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: _fontSize * 0.8125, // Adjust size proportionally
                                     color: Color(0xFFADADAD),
                                   ),
                                 ),
@@ -104,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                               Text(
                                 'Mot de passe',
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: _fontSize, // Use the variable here
                                   color: Color(0xFF2B2B2B),
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -114,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                                 decoration: InputDecoration(
                                   hintText: 'Entrez votre mot de passe',
                                   hintStyle: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: _fontSize * 0.8125, // Adjust size proportionally
                                     color: Color(0xFFADADAD),
                                   ),
                                   suffixIcon: GestureDetector(
@@ -158,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                                       Text(
                                         'Rester connecté ?',
                                         style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: _fontSize * 0.6875, // Adjust size proportionally
                                           color: Color(0xFF707070),
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -179,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                                       child: Text(
                                         'Mot de passe oublié ?',
                                         style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: _fontSize * 0.6875, // Adjust size proportionally
                                           color: Colors.blue,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -205,7 +207,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Text(
                                       'Connexion',
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: _fontSize, // Use the variable here
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -222,7 +224,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Text(
                                     'Vous n\'avez pas encore de compte ?',
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: _fontSize * 0.6875, // Adjust size proportionally
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -242,7 +244,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Text(
                                       ' Inscrivez-vous ici',
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: _fontSize * 0.6875, // Adjust size proportionally
                                         color: Color(0xFFFBCA19),
                                         fontWeight: FontWeight.normal,
                                       ),

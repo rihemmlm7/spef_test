@@ -6,11 +6,22 @@ import 'package:spef/components/Media.dart';
 import 'package:spef/components/Questionnaire.dart';
 import 'package:spef/pages/client.dart';
 
+class Formulaire extends StatefulWidget {
+  @override
+  _FormulaireState createState() => _FormulaireState();
+}
 
-class Formulaire extends StatelessWidget {
+class _FormulaireState extends State<Formulaire> {
   final int clientsTab1 = 10;
   final int clientsTab2 = 20;
   final int clientsTab3 = 30;
+  late int _currentTabIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentTabIndex = 0; // Initially set to the first tab
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +104,11 @@ class Formulaire extends StatelessWidget {
                 ),
               ),
             ],
+            onTap: (index) {
+              setState(() {
+                _currentTabIndex = index;
+              });
+            },
           ),
         ),
         body: Container(
@@ -114,99 +130,52 @@ class Formulaire extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Theme.of(context).bottomAppBarColor,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text(
-                  'Annuler',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ClientPage(initialTabIndex: 1)),
-                  );
-                },
-                child: Text(
-                  'Valider',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: Align(
-          alignment: Alignment.bottomRight,
-          child: PopupMenuButton(
-            offset: Offset(-50, -190),
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(
-                  value: 'Choisir une photo ou une vidéo',
-                  child: ListTile(
-                    title: Text(
-                      'Choisir une photo ou une vidéo',
-                      style: TextStyle(color: Colors.black),
+        bottomNavigationBar: _currentTabIndex == 0
+            ? BottomAppBar(
+                color: Theme.of(context).bottomAppBarColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        'Annuler',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
-                    leading: Icon(Icons.image),
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 'Prendre une photo ou une vidéo',
-                  child: ListTile(
-                    title: Text(
-                      'Prendre une photo ou une vidéo',
-                      style: TextStyle(color: Colors.black),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ClientPage(initialTabIndex: 1)),
+                        );
+                      },
+                      child: Text(
+                        'Valider',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
-                    leading: Icon(Icons.camera_alt),
-                  ),
+                  ],
                 ),
-                PopupMenuItem(
-                  value: 'Choisir des documents',
-                  child: ListTile(
-                    title: Text(
-                      'Choisir des documents',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    leading: Icon(Icons.attach_file),
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 'Numériser des documents',
-                  child: ListTile(
-                    title: Text(
-                      'Numériser des documents',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    leading: Icon(Icons.scanner),
-                  ),
-                ),
-              ];
-            },
-            onSelected: (value) {
-              _selectMenuItem(value.toString());
-            },
-            child: FloatingActionButton(
-              onPressed: null,
-              backgroundColor: Colors.amber,
-              child: Icon(Icons.description, color: Colors.white),
-              shape: CircleBorder(),
-            ),
-          ),
+              )
+            : null,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _selectMenuItem('Choisir une photo ou une vidéo');
+          },
+          backgroundColor: Colors.amber,
+          child: Icon(Icons.description, color: Colors.white),
+          shape: CircleBorder(),
         ),
       ),
     );
@@ -263,7 +232,7 @@ class Formulaire extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget _buildTab3Content(BuildContext context) {
     return GridView.builder(
       padding: EdgeInsets.zero,

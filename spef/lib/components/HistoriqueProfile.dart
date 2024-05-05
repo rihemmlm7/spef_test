@@ -31,7 +31,7 @@ class HistoriqueProfile extends StatelessWidget {
                 child: Container(
                   color: Colors.white, // Set background color to white
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.22, // Adjust height here
+                    height: MediaQuery.of(context).size.height * 0.21, // Adjust height here
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
