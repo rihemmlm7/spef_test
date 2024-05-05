@@ -134,7 +134,7 @@ class ProfilePage extends StatelessWidget {
           );
         },
         backgroundColor: Colors.amber,
-        child: Icon(Icons.person_add, color: Colors.white),
+        child: Icon(Icons.add, color: Colors.white),
         shape: CircleBorder(),
       ),
     );
