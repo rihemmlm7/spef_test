@@ -33,7 +33,7 @@ class DashboardPage extends StatelessWidget {
                 child: Text(
                   'Rapport du jour',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),
@@ -48,7 +48,7 @@ class DashboardPage extends StatelessWidget {
                 child: Text(
                   'Notification',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),

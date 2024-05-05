@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:spef/components/Doc.dart';
 import 'package:spef/components/Media.dart';
 import 'package:spef/components/Questionnaire.dart';
 import 'package:spef/pages/client.dart';
+import 'package:spef/components/FileHandlingButton.dart'; 
 
 class Formulaire extends StatelessWidget {
   final int clientsTab1 = 10;
@@ -19,7 +22,7 @@ class Formulaire extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.amber,
-          title: Text('Formulair'),
+          title: Text('Formulaire'),
           bottom: TabBar(
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(width: 4.0, color: Colors.red),
@@ -37,7 +40,7 @@ class Formulaire extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black,
-                           fontSize: 16.0,
+                          fontSize: 16.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -79,7 +82,7 @@ class Formulaire extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black,
-                           fontSize: 16.0,
+                          fontSize: 16.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -146,6 +149,65 @@ class Formulaire extends StatelessWidget {
             ],
           ),
         ),
+        floatingActionButton: Align(
+          alignment: Alignment.bottomRight,
+          child: PopupMenuButton(
+            offset: Offset(-50, -190),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  value: 'Choisir une photo ou une vidéo',
+                  child: ListTile(
+                    title: Text(
+                      'Choisir une photo ou une vidéo',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    leading: Icon(Icons.image),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'Prendre une photo ou une vidéo',
+                  child: ListTile(
+                    title: Text(
+                      'Prendre une photo ou une vidéo',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    leading: Icon(Icons.camera_alt),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'Choisir des documents',
+                  child: ListTile(
+                    title: Text(
+                      'Choisir des documents',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    leading: Icon(Icons.attach_file),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'Numériser des documents',
+                  child: ListTile(
+                    title: Text(
+                      'Numériser des documents',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    leading: Icon(Icons.scanner),
+                  ),
+                ),
+              ];
+            },
+            onSelected: (value) {
+              _selectMenuItem(value.toString());
+            },
+            child: FloatingActionButton(
+              onPressed: null,
+              backgroundColor: Colors.amber,
+              child: Icon(Icons.description, color: Colors.white),
+              shape: CircleBorder(),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -163,7 +225,7 @@ class Formulaire extends StatelessWidget {
           '$number',
           style: TextStyle(
             color: Colors.black,
-             fontSize: 16.0,
+            fontSize: 15.0,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -229,5 +291,33 @@ class Formulaire extends StatelessWidget {
         fit: BoxFit.cover,
       ),
     );
+  }
+
+  void _selectMenuItem(String value) async {
+    final picker = ImagePicker();
+    late var pickedFile;
+
+    if (value == 'Choisir une photo ou une vidéo') {
+      pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    } else if (value == 'Prendre une photo ou une vidéo') {
+      pickedFile = await picker.pickImage(source: ImageSource.camera);
+    }
+    late String filePath;
+
+    if (value == 'Choisir des documents') {
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf', 'doc', 'docx'],
+      );
+
+      if (result != null) {
+        filePath = result.files.single.path!;
+        // Handle the selected file path as needed
+      } else {
+        // User canceled the picker
+      }
+    }
+
+    // Handle other actions if needed
   }
 }

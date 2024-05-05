@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/HistoriqueProfile.dart';
 import 'package:spef/pages/FicheClientPros.dart';
-
+import 'package:spef/pages/ClientVisitPage.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -102,7 +102,7 @@ class ProfilePage extends StatelessWidget {
                     subtitle: Padding(
                       padding: const EdgeInsets.only(left: 15.0),
                       child: Text(
-                        '123 Street, City, Country',
+                        '123456789',
                         style: TextStyle(fontSize: screenHeight * 0.02),
                       ),
                     ),
@@ -123,6 +123,19 @@ class ProfilePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ClientVisitPage(),
+            ),
+          );
+        },
+        backgroundColor: Colors.amber,
+        child: Icon(Icons.person_add, color: Colors.white),
+        shape: CircleBorder(),
       ),
     );
   }

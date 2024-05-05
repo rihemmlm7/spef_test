@@ -34,7 +34,7 @@ class _HistoryPageState extends State<HistoryPage> {
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent, // Set background color to transparent
       appBar: AppBar(
         backgroundColor: Colors.amber,
         title: Text('Historique'),
@@ -65,27 +65,30 @@ class _HistoryPageState extends State<HistoryPage> {
                       constraints: BoxConstraints(
                         maxHeight: 400.0, // Set a maximum height for the calendar
                       ),
-                      child: TableCalendar<int>(
-                        firstDay: DateTime.utc(2010, 10, 16),
-                        lastDay: DateTime.utc(2030, 3, 14),
-                        headerVisible: true,
-                        headerStyle: const HeaderStyle(
-                          titleCentered: true,
-                          formatButtonVisible: false,
+                      child: Container( // Wrap TableCalendar with Container
+                        color: Colors.white, // Set background color to white
+                        child: TableCalendar<int>(
+                          firstDay: DateTime.utc(2010, 10, 16),
+                          lastDay: DateTime.utc(2030, 3, 14),
+                          headerVisible: true,
+                          headerStyle: const HeaderStyle(
+                            titleCentered: true,
+                            formatButtonVisible: false,
+                          ),
+                          daysOfWeekStyle: const DaysOfWeekStyle(
+                            weekdayStyle: TextStyle(color: Colors.amber),
+                            weekendStyle: TextStyle(color: Colors.red),
+                          ),
+                          calendarStyle: CalendarStyle(
+                            todayDecoration: const BoxDecoration(color: Colors.amber),
+                            selectedDecoration: BoxDecoration(color: Colors.amber.shade200),
+                          ),
+                          focusedDay: _focusedDay,
+                          selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+                          onDaySelected: _onDaySelected,
+                          calendarFormat: _calendarFormat,
+                          onFormatChanged: _onFormatChanged,
                         ),
-                        daysOfWeekStyle: const DaysOfWeekStyle(
-                          weekdayStyle: TextStyle(color: Colors.amber),
-                          weekendStyle: TextStyle(color: Colors.red),
-                        ),
-                        calendarStyle: CalendarStyle(
-                          todayDecoration: const BoxDecoration(color: Colors.amber),
-                          selectedDecoration: BoxDecoration(color: Colors.amber.shade200),
-                        ),
-                        focusedDay: _focusedDay,
-                        selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-                        onDaySelected: _onDaySelected,
-                        calendarFormat: _calendarFormat,
-                        onFormatChanged: _onFormatChanged,
                       ),
                     ),
                   ),
@@ -96,31 +99,31 @@ class _HistoryPageState extends State<HistoryPage> {
             Expanded(
               child: _calendarFormat == CalendarFormat.week
                   ? ListView(
-                      children: [
-                        FractionallySizedBox(
-                          widthFactor: 1,
-                          child: Divider(
-                            color: Colors.grey[300],
-                            thickness: screenHeight * 0.002,
-                          ),
-                        ),
-                        HistoriqueProfile(),
-                      ],
-                    )
+                children: [
+                  FractionallySizedBox(
+                    widthFactor: 1,
+                    child: Divider(
+                      color: Colors.grey[300],
+                      thickness: screenHeight * 0.004,
+                    ),
+                  ),
+                  HistoriqueProfile(),
+                ],
+              )
                   : SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          FractionallySizedBox(
-                            widthFactor: 1,
-                            child: Divider(
-                              color: Colors.grey[300],
-                              thickness: screenHeight * 0.002,
-                            ),
-                          ),
-                          HistoriqueProfile(),
-                        ],
+                child: Column(
+                  children: [
+                    FractionallySizedBox(
+                      widthFactor: 1,
+                      child: Divider(
+                        color: Colors.grey[300],
+                        thickness: screenHeight * 0.002,
                       ),
                     ),
+                    HistoriqueProfile(),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

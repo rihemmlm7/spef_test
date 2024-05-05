@@ -16,7 +16,7 @@ class HistoriqueProfile extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  Formulaire()),
+                  MaterialPageRoute(builder: (context) => Formulaire()),
                 );
               },
               child: Container(
@@ -28,159 +28,162 @@ class HistoriqueProfile extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: SizedBox(
-                  height: 125,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(5),
-                        child: Container(
-                          width: 50,
-                          height: 60,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2,
+                child: Container(
+                  color: Colors.white, // Set background color to white
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.22, // Adjust height here
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Container(
+                            width: 50,
+                            height: 60,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              ),
                             ),
-                          ),
-                          child: Image.network(
-                            'https://picsum.photos/seed/$index/600',
-                            fit: BoxFit.cover,
+                            child: Image.network(
+                              'https://picsum.photos/seed/$index/600',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: Text(
-                                'Nom client',
-                                style: TextStyle(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0,
-                                  fontSize: 16,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(4),
+                                child: Text(
+                                  'Nom client',
+                                  style: TextStyle(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: Text(
-                                textToShow,
-                                style: TextStyle(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0,
-                                  color: textToShow == 'Visite'
-                                      ? Colors.yellow
-                                      : Colors.grey,
+                              Padding(
+                                padding: EdgeInsets.all(4),
+                                child: Text(
+                                  textToShow,
+                                  style: TextStyle(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                    color: textToShow == 'Visite'
+                                        ? Colors.yellow
+                                        : Colors.grey,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => Formulaire(),
-                                            ),
-                                          );
-                                        },
-                                        style: ButtonStyle(
-                                          backgroundColor: MaterialStateProperty.all(
-                                              Colors.white),
-                                          foregroundColor: MaterialStateProperty.all(
-                                              Colors.black),
-                                          side: MaterialStateProperty.all(
-                                              BorderSide(
-                                                  color: Colors.grey)),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Icon(
-                                              Icons.description,
-                                              color: Colors.red,
-                                              size: 20,
-                                            ),
-                                            SizedBox(width: 8),
-                                            Flexible(
-                                              child: Text(
-                                                'Document +$numberOfDocuments',
-                                                style: TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  letterSpacing: 0,
-                                                ),
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 1,
+                              Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Formulaire(),
                                               ),
-                                            ),
-                                          ],
+                                            );
+                                          },
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all(
+                                                Colors.white),
+                                            foregroundColor: MaterialStateProperty.all(
+                                                Colors.black),
+                                            side: MaterialStateProperty.all(
+                                                BorderSide(
+                                                    color: Colors.grey)),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(
+                                                Icons.description,
+                                                color: Colors.red,
+                                                size: 20,
+                                              ),
+                                              SizedBox(width: 8),
+                                              Flexible(
+                                                child: Text(
+                                                  'Document +$numberOfDocuments',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0,
+                                                  ),
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 1,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          // Add your action here for the second button
-                                        },
-                                        style: ButtonStyle(
-                                          backgroundColor: MaterialStateProperty.all(
-                                              Colors.white),
-                                          foregroundColor: MaterialStateProperty.all(
-                                              Colors.black),
-                                          side: MaterialStateProperty.all(
-                                              BorderSide(
-                                                  color: Colors.grey)),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Icon(
-                                              Icons.description,
-                                              color: Colors.blue,
-                                              size: 20,
-                                            ),
-                                            SizedBox(width: 8),
-                                            Flexible(
-                                              child: Text(
-                                                'Document +$numberOfDocuments',
-                                                style: TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  letterSpacing: 0,
-                                                ),
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 1,
+                                    SizedBox(width: 10),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            // Add your action here for the second button
+                                          },
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all(
+                                                Colors.white),
+                                            foregroundColor: MaterialStateProperty.all(
+                                                Colors.black),
+                                            side: MaterialStateProperty.all(
+                                                BorderSide(
+                                                    color: Colors.grey)),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(
+                                                Icons.description,
+                                                color: Colors.blue,
+                                                size: 20,
                                               ),
-                                            ),
-                                          ],
+                                              SizedBox(width: 8),
+                                              Flexible(
+                                                child: Text(
+                                                  'Document +$numberOfDocuments',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0,
+                                                  ),
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 1,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

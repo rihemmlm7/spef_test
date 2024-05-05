@@ -195,93 +195,10 @@ class _QuestionnaireState extends State<Questionnaire> {
         ),
       ),
      
-      floatingActionButton: Align(
-        alignment: Alignment.bottomRight,
-        child: PopupMenuButton(
-          offset: Offset(-50, -190),
-          itemBuilder: (BuildContext context) {
-            return [
-              PopupMenuItem(
-                value: 'Choisir une photo ou une vidéo',
-                child: ListTile(
-                  title: Text(
-                    'Choisir une photo ou une vidéo',
-                    style: TextStyle(color: Colors.black), // Set text color to black
-                  ),
-                  leading: Icon(Icons.image),
-                ),
-              ),
-              PopupMenuItem(
-                value: 'Prendre une photo ou une vidéo',
-                child: ListTile(
-                  title: Text(
-                    'Prendre une photo ou une vidéo',
-                    style: TextStyle(color: Colors.black), // Set text color to black
-                  ),
-                  leading: Icon(Icons.camera_alt),
-                ),
-              ),
-              PopupMenuItem(
-                value: 'Choisir des documents',
-                child: ListTile(
-                  title: Text(
-                    'Choisir des documents',
-                    style: TextStyle(color: Colors.black), // Set text color to black
-                  ),
-                  leading: Icon(Icons.attach_file),
-                ),
-              ),
-              PopupMenuItem(
-                value: 'Numériser des documents',
-                child: ListTile(
-                  title: Text(
-                    'Numériser des documents',
-                    style: TextStyle(color: Colors.black), // Set text color to black
-                  ),
-                  leading: Icon(Icons.scanner),
-                ),
-              ),
-            ];
-          },
-          onSelected: (value) {
-            _selectMenuItem(value.toString());
-          },
-          child: FloatingActionButton(
-            onPressed: null,
-            backgroundColor: Colors.amber, // Set background color to amber
-            child: Icon(Icons.description, color: Colors.white), // Set icon color to white
-            shape: CircleBorder(), // Make it circular
-          ),
-        ),
-      ),
+     
     );
   }
 
-  void _selectMenuItem(String value) async {
-  final picker = ImagePicker();
-  late var pickedFile;
 
-  if (value == 'Choisir une photo ou une vidéo') {
-    pickedFile = await picker.pickImage(source: ImageSource.gallery);
-  } else if (value == 'Prendre une photo ou une vidéo') {
-    pickedFile = await picker.pickImage(source: ImageSource.camera);
-  }
-  late String filePath;
-
-  if (value == 'Choisir des documents') {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['pdf', 'doc', 'docx'], // You can customize the allowed file types
-    );
-
-    if (result != null) {
-      filePath = result.files.single.path!;
-      // Handle the selected file path as needed, for example, you can display it or upload it
-    } else {
-      // User canceled the picker
-    }
-  }
-
-  }
 
 }

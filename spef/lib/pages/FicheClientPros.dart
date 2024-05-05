@@ -9,6 +9,53 @@ class AddClientPage extends StatefulWidget {
 class _AddClientPageState extends State<AddClientPage> {
   String _selectedType = 'type1';
   String _status = 'client';
+  List<TextEditingController> _phoneControllers = [TextEditingController()];
+  List<TextEditingController> _emailControllers = [TextEditingController()];
+
+  Widget _buildTextField(String label, TextEditingController controller, FocusNode focusNode,
+      {String? hintText, IconData? prefixIcon}) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: TextField(
+        controller: controller,
+        focusNode: focusNode,
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: hintText,
+          prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
+        ),
+      ),
+    );
+  }
+
+  // Function to add a phone number
+  void _addPhoneNumber() {
+    setState(() {
+      _phoneControllers.add(TextEditingController());
+    });
+  }
+
+  // Function to remove a phone number at a given index
+  void _removePhoneNumber(int index) {
+    setState(() {
+      _phoneControllers.removeAt(index);
+    });
+  }
+
+  // Function to add an email address
+  void _addEmailAddress() {
+    setState(() {
+      _emailControllers.add(TextEditingController());
+    });
+  }
+
+  // Function to remove an email address at a given index
+  void _removeEmailAddress(int index) {
+    setState(() {
+      _emailControllers.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,45 +67,259 @@ class _AddClientPageState extends State<AddClientPage> {
         backgroundColor: Colors.amber,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(30.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            buildListTile(
-              title: 'Position',
+            ListTile(
+              title: Text(
+                'Position',
+                style: TextStyle(color: Colors.white),
+              ),
+              tileColor: Colors.blue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              trailing: Icon(
+                Icons.place,
+                color: Colors.white,
+              ),
               onTap: () {},
-              icon: Icons.place,
-              color: Colors.blue,
             ),
             SizedBox(height: screenSize.height * 0.02),
-            buildSectionTitle(title: 'Status'),
-            buildRadioGroup(
-              value1: 'client',
-              value2: 'prospect',
-              text1: 'Client',
-              text2: 'Prospect',
+            Text(
+              'Status',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            SizedBox(height: screenSize.height * 0.01),
+            Row(
+              children: [
+                Radio(
+                  activeColor: Colors.blue,
+                  value: 'client',
+                  groupValue: _status,
+                  onChanged: (value) {
+                    setState(() {
+                      _status = value.toString();
+                    });
+                  },
+                ),
+                Text('Client'),
+                SizedBox(width: screenSize.width / 4),
+                Radio(
+                  activeColor: Colors.blue,
+                  value: 'prospect',
+                  groupValue: _status,
+                  onChanged: (value) {
+                    setState(() {
+                      _status = value.toString();
+                    });
+                  },
+                ),
+                Text('Prospect'),
+              ],
             ),
             SizedBox(height: screenSize.height * 0.02),
-            buildSectionTitle(title: 'Type'),
-            buildDropdownButtonFormField(),
+            Text(
+              'Type',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            SizedBox(height: screenSize.height * 0.01),
+            DropdownButtonFormField<String>(
+              value: _selectedType,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+              items: [
+                DropdownMenuItem<String>(
+                  value: 'type1',
+                  child: Text('éleveur'),
+                ),
+                DropdownMenuItem<String>(
+                  value: 'type2',
+                  child: Text('Revendeur'),
+                ),
+                DropdownMenuItem<String>(
+                  value: 'type3',
+                  child: Text('coopérative'),
+                ),
+                DropdownMenuItem<String>(
+                  value: 'type4',
+                  child: Text('Revendeur et éleveur'),
+                ),
+              ],
+              onChanged: (value) {
+                setState(() {
+                  _selectedType = value!;
+                });
+              },
+            ),
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'Nom'),
+            _buildTextField(
+              'Nom',
+              TextEditingController(),
+              FocusNode(),
+              hintText: 'Nom',
+            ),
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'Prénom'),
+            _buildTextField(
+              'Prénom',
+              TextEditingController(),
+              FocusNode(),
+              hintText: 'Prénom',
+            ),
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'Nom de l\'Entreprise'),
+            _buildTextField(
+              'Nom de l\'Entreprise',
+              TextEditingController(),
+              FocusNode(),
+              hintText: 'Nom de l\'Entreprise',
+            ),
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'Téléphone'),
+            Text(
+              'Téléphone',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            SizedBox(height: screenSize.height * 0.01),
+            // Display existing phone numbers using ListView.builder
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: _phoneControllers.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 50,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _phoneControllers[index],
+                          decoration: InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.remove),
+                        onPressed: () {
+                          _removePhoneNumber(index);
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            // Button to add more phone numbers
+            GestureDetector(
+              onTap: _addPhoneNumber,
+              child: Row(
+                children: [
+                  Icon(Icons.add),
+                  Text('Ajouter un numéro de téléphone'),
+                ],
+              ),
+            ),
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'Email'),
+
+            // Section for emails
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'RC'),
+            Text(
+              'Email',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            SizedBox(height: screenSize.height * 0.01),
+            // Display existing email addresses using ListView.builder
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: _emailControllers.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 50,
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _emailControllers[index],
+                          decoration: InputDecoration(
+                            hintText: 'Email',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.remove),
+                        onPressed: () {
+                          _removeEmailAddress(index);
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            // Button to add more email addresses
+            GestureDetector(
+              onTap: _addEmailAddress,
+              child: Row(
+                children: [
+                  Icon(Icons.add),
+                  Text('Ajouter une adresse email'),
+                ],
+              ),
+            ),
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'AI'),
+
+            // Existing code...
+
+            _buildTextField(
+              'RC',
+              TextEditingController(),
+              FocusNode(),
+              hintText: 'RC',
+            ),
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'NIF'),
+            _buildTextField(
+              'AI',
+              TextEditingController(),
+              FocusNode(),
+              hintText: 'AI',
+            ),
             SizedBox(height: screenSize.height * 0.02),
-            buildTextInputField(label: 'NIC'),
+            _buildTextField(
+              'NIF',
+              TextEditingController(),
+              FocusNode(),
+              hintText: 'NIF',
+            ),
+            SizedBox(height: screenSize.height * 0.02),
+            _buildTextField(
+              'NIC',
+              TextEditingController(),
+              FocusNode(),
+              hintText: 'NIC',
+            ),
           ],
         ),
       ),
@@ -75,7 +336,7 @@ class _AddClientPageState extends State<AddClientPage> {
                 'Annuler',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
               ),
             ),
@@ -90,143 +351,13 @@ class _AddClientPageState extends State<AddClientPage> {
                 'Valider',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget buildListTile({
-    required String title,
-    required VoidCallback onTap,
-    required IconData icon,
-    required Color color,
-  }) {
-    return ListTile(
-      title: Text(
-        title,
-        style: TextStyle(color: Colors.white),
-      ),
-      tileColor: color,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      trailing: Icon(
-        icon,
-        color: Colors.white,
-      ),
-      onTap: onTap,
-    );
-  }
-
-  Widget buildSectionTitle({required String title}) {
-    return Text(
-      title,
-      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-    );
-  }
-
-  Widget buildRadioGroup({
-    required String value1,
-    required String value2,
-    required String text1,
-    required String text2,
-  }) {
-    return Row(
-      children: [
-        Radio(
-          activeColor: Colors.blue,
-          value: value1,
-          groupValue: _status,
-          onChanged: (value) {
-            setState(() {
-              _status = value.toString();
-            });
-          },
-        ),
-        Text(text1),
-        SizedBox(width: MediaQuery.of(context).size.width / 2.66),
-        Radio(
-          activeColor: Colors.blue,
-          value: value2,
-          groupValue: _status,
-          onChanged: (value) {
-            setState(() {
-              _status = value.toString();
-            });
-          },
-        ),
-        Text(text2),
-      ],
-    );
-  }
-
-  Widget buildDropdownButtonFormField() {
-    return DropdownButtonFormField<String>(
-      value: _selectedType,
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide.none,
-        ),
-      ),
-      items: [
-        DropdownMenuItem<String>(
-          value: 'type1',
-          child: Text('Éleveur'),
-        ),
-        DropdownMenuItem<String>(
-          value: 'type2',
-          child: Text('Revendeur'),
-        ),
-        DropdownMenuItem<String>(
-          value: 'type3',
-          child: Text('Coopérative'),
-        ),
-        DropdownMenuItem<String>(
-          value: 'type4',
-          child: Text('Revendeur et Éleveur'),
-        ),
-      ],
-      onChanged: (value) {
-        setState(() {
-          _selectedType = value!;
-        });
-      },
-    );
-  }
-
-  Widget buildTextInputField({required String label}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-        ),
-        SizedBox(height: 8),
-        Container(
-          height: 50,
-          child: TextFormField(
-            decoration: InputDecoration(
-              hintText: label,
-              hintStyle: TextStyle(color: Colors.grey),
-              filled: true,
-              fillColor: Colors.white,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
