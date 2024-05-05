@@ -31,7 +31,7 @@ class HistoriqueProfile extends StatelessWidget {
                 child: Container(
                   color: Colors.white, // Set background color to white
                   child: Padding(
-                    padding: EdgeInsets.all(8.0), // Add padding here
+                    padding: EdgeInsets.all(15.0), // Add padding here
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
