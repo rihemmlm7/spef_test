@@ -23,7 +23,7 @@ class CustomSearchWidget extends StatelessWidget {
       decoration: InputDecoration(
         hintText: 'Recherche',
         filled: true,
-        fillColor: Colors.grey[400], // You can set your desired color here
+        fillColor: Colors.grey[350], // You can set your desired color here
         prefixIcon: Icon(
           Icons.search_sharp,
           color: Colors.grey[800], // You can set your desired icon color here

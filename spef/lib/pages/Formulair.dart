@@ -15,13 +15,7 @@ class _FormulaireState extends State<Formulaire> {
   final int clientsTab1 = 10;
   final int clientsTab2 = 20;
   final int clientsTab3 = 30;
-  late int _currentTabIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentTabIndex = 0; // Initially set to the first tab
-  }
+  int _currentTabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -152,9 +146,7 @@ class _FormulaireState extends State<Formulaire> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ClientPage(initialTabIndex: 1)),
+                          MaterialPageRoute(builder: (context) => ClientPage(initialTabIndex: 1)),
                         );
                       },
                       child: Text(
@@ -169,14 +161,66 @@ class _FormulaireState extends State<Formulaire> {
                 ),
               )
             : null,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            _selectMenuItem('Choisir une photo ou une vidéo');
-          },
-          backgroundColor: Colors.amber,
-          child: Icon(Icons.description, color: Colors.white),
-          shape: CircleBorder(),
-        ),
+        floatingActionButton:  Align(
+                alignment: Alignment.bottomRight,
+                child: PopupMenuButton(
+                  offset: Offset(-50, -190),
+                  itemBuilder: (BuildContext context) {
+                    return [
+                      PopupMenuItem(
+                        value: 'Choisir une photo ou une vidéo',
+                        child: ListTile(
+                          title: Text(
+                            'Choisir une photo ou une vidéo',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          leading: Icon(Icons.image),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 'Prendre une photo ou une vidéo',
+                        child: ListTile(
+                          title: Text(
+                            'Prendre une photo ou une vidéo',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          leading: Icon(Icons.camera_alt),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 'Choisir des documents',
+                        child: ListTile(
+                          title: Text(
+                            'Choisir des documents',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          leading: Icon(Icons.attach_file),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 'Numériser des documents',
+                        child: ListTile(
+                          title: Text(
+                            'Numériser des documents',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          leading: Icon(Icons.scanner),
+                        ),
+                      ),
+                    ];
+                  },
+                  onSelected: (value) {
+                    _selectMenuItem(value.toString());
+                  },
+                  child: FloatingActionButton(
+                    onPressed: null,
+                    backgroundColor: Colors.amber,
+                    child: Icon(Icons.description, color: Colors.white),
+                    shape: CircleBorder(),
+                  ),
+                ),
+              )
+            
       ),
     );
   }

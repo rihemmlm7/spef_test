@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spef/pages/FicheClientPros.dart';
+import 'package:spef/pages/ProfilePage.dart';
+
 
 class ClienttList extends StatelessWidget {
   @override
@@ -57,27 +60,74 @@ class ClienttList extends StatelessWidget {
               ),
             ),
             SizedBox(width: 10), // Add space between text and progress
-            ElevatedButton.icon(
-              onPressed: () {
-                print('Button pressed ...');
+            PopupMenuButton(
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    child: Text('Edit'),
+                    value: 'edit',
+                  ),
+                  PopupMenuItem(
+                    child: Text('Delete'),
+                    value: 'delete',
+                  ),
+                ];
               },
-              icon: Icon(
-                Icons.directions,
-                size: 20,
-                color: Colors.white,
-              ),
-              label: Text(
-                'Itinéraire',
-                style: TextStyle(
+              onSelected: (dynamic value) {
+                if (value == 'edit') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddClientPage(),
+                    ),
+                  );
+                } else if (value == 'delete') {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Confirm Delete'),
+                        content: Text('Are you sure you want to delete this client?'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              // Perform delete action here
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('Delete'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
+              child: ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.directions,
+                  size: 20,
                   color: Colors.white,
                 ),
-              ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
+                label: Text(
+                  'Itinéraire',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
-                backgroundColor: Color(0xFFFBCA19),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  backgroundColor: Color(0xFFFBCA19),
+                ),
               ),
             ),
           ],

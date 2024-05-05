@@ -53,11 +53,11 @@ class ProspectComponent extends StatelessWidget {
           Stack(
             children: [
               SizedBox(
-                width: 40,
-                height: 40,
+                width: 30,
+                height: 30,
                 child: CircularProgressIndicator(
-                  value: 0.5,
-                  strokeWidth: 7,
+                  value: 0.4,
+                  strokeWidth: 6,
                   valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF04CA12)),
                   backgroundColor: Color(0xCC737272),
                 ),
@@ -68,8 +68,8 @@ class ProspectComponent extends StatelessWidget {
                     '50%',
                     style: TextStyle(
                       fontFamily: 'Outfit',
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),

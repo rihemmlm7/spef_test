@@ -39,93 +39,99 @@ class _HistoryPageState extends State<HistoryPage> {
         backgroundColor: Colors.amber,
         title: Text('Historique'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(screenHeight * 0.00),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(height: screenHeight * 0.01),
-            GestureDetector( // Wrap TableCalendar with GestureDetector
-              onTap: () {
-                // Increment tap count on each tap
-                _tapCount++;
-                // If tap count reaches 2, toggle calendar format to week
-                if (_tapCount == 1) {
-                  _toggleCalendarFormat();
-                  _tapCount = 0; // Reset tap count
-                }
-              },
-              child: SizedBox(
-                height: _calendarHeight, // Set the height of the calendar
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 400),
+      body: WillPopScope(
+        onWillPop: () async {
+          Navigator.pop(context); // Navigate back to the previous screen when back button is pressed
+          return true; // Return true to indicate that the back action is handled
+        },
+        child: Padding(
+          padding: EdgeInsets.all(screenHeight * 0.00),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(height: screenHeight * 0.01),
+              GestureDetector( // Wrap TableCalendar with GestureDetector
+                onTap: () {
+                  // Increment tap count on each tap
+                  _tapCount++;
+                  // If tap count reaches 2, toggle calendar format to week
+                  if (_tapCount == 1) {
+                    _toggleCalendarFormat();
+                    _tapCount = 0; // Reset tap count
+                  }
+                },
+                child: SizedBox(
                   height: _calendarHeight, // Set the height of the calendar
-                  child: SingleChildScrollView(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxHeight: 400.0, // Set a maximum height for the calendar
-                      ),
-                      child: Container( // Wrap TableCalendar with Container
-                        color: Colors.white, // Set background color to white
-                        child: TableCalendar<int>(
-                          firstDay: DateTime.utc(2010, 10, 16),
-                          lastDay: DateTime.utc(2030, 3, 14),
-                          headerVisible: true,
-                          headerStyle: const HeaderStyle(
-                            titleCentered: true,
-                            formatButtonVisible: false,
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: 400),
+                    height: _calendarHeight, // Set the height of the calendar
+                    child: SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxHeight: 400.0, // Set a maximum height for the calendar
+                        ),
+                        child: Container( // Wrap TableCalendar with Container
+                          color: Colors.white, // Set background color to white
+                          child: TableCalendar<int>(
+                            firstDay: DateTime.utc(2010, 10, 16),
+                            lastDay: DateTime.utc(2030, 3, 14),
+                            headerVisible: true,
+                            headerStyle: const HeaderStyle(
+                              titleCentered: true,
+                              formatButtonVisible: false,
+                            ),
+                            daysOfWeekStyle: const DaysOfWeekStyle(
+                              weekdayStyle: TextStyle(color: Colors.amber),
+                              weekendStyle: TextStyle(color: Colors.red),
+                            ),
+                            calendarStyle: CalendarStyle(
+                              todayDecoration: const BoxDecoration(color: Colors.amber),
+                              selectedDecoration: BoxDecoration(color: Colors.amber.shade200),
+                            ),
+                            focusedDay: _focusedDay,
+                            selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+                            onDaySelected: _onDaySelected,
+                            calendarFormat: _calendarFormat,
+                            onFormatChanged: _onFormatChanged,
                           ),
-                          daysOfWeekStyle: const DaysOfWeekStyle(
-                            weekdayStyle: TextStyle(color: Colors.amber),
-                            weekendStyle: TextStyle(color: Colors.red),
-                          ),
-                          calendarStyle: CalendarStyle(
-                            todayDecoration: const BoxDecoration(color: Colors.amber),
-                            selectedDecoration: BoxDecoration(color: Colors.amber.shade200),
-                          ),
-                          focusedDay: _focusedDay,
-                          selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-                          onDaySelected: _onDaySelected,
-                          calendarFormat: _calendarFormat,
-                          onFormatChanged: _onFormatChanged,
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: screenHeight * 0.01),
-            Expanded(
-              child: _calendarFormat == CalendarFormat.week
-                  ? ListView(
-                children: [
-                  FractionallySizedBox(
-                    widthFactor: 1,
-                    child: Divider(
-                      color: Colors.grey[300],
-                      thickness: screenHeight * 0.004,
-                    ),
-                  ),
-                  HistoriqueProfile(),
-                ],
-              )
-                  : SingleChildScrollView(
-                child: Column(
+              SizedBox(height: screenHeight * 0.01),
+              Expanded(
+                child: _calendarFormat == CalendarFormat.week
+                    ? ListView(
                   children: [
                     FractionallySizedBox(
                       widthFactor: 1,
                       child: Divider(
                         color: Colors.grey[300],
-                        thickness: screenHeight * 0.002,
+                        thickness: screenHeight * 0.004,
                       ),
                     ),
                     HistoriqueProfile(),
                   ],
+                )
+                    : SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      FractionallySizedBox(
+                        widthFactor: 1,
+                        child: Divider(
+                          color: Colors.grey[300],
+                          thickness: screenHeight * 0.002,
+                        ),
+                      ),
+                      HistoriqueProfile(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

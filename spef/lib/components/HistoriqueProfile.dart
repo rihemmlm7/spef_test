@@ -7,7 +7,7 @@ class HistoriqueProfile extends StatelessWidget {
     int numberOfDocuments = 5;
     return SingleChildScrollView(
       child: Column(
-        children: List.generate(5, (index) {
+        children: List.generate(10, (index) {
           String textToShow = index % 2 == 0 ? 'Visite' : 'Prospect';
 
           return Padding(

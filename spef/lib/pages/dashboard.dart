@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/DasheComponent.dart';
 import 'package:spef/components/NotifComp.dart';
+import 'package:spef/pages/history.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -21,9 +22,7 @@ class DashboardPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding:
-            const EdgeInsets.all(8.0), // Add padding around the entire body
-
+        padding: const EdgeInsets.all(8.0), // Add padding around the entire body
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,27 +55,20 @@ class DashboardPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: NotifComp(),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: NotifComp(),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: NotifComp(),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: NotifComp(),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: NotifComp(),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: NotifComp(),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Container(
+                          color: Color(0xFFE8E8E8), // Set background color here
+                          child: HistoryPage(),
+                        ),
+                      ),
+                    );
+                  },
+                  child: NotifComp(),
+                ),
               ),
             ],
           ),
