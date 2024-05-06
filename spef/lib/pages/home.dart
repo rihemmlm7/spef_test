@@ -8,27 +8,25 @@ import 'history.dart';
 import 'message.dart';
 
 class Home extends StatefulWidget {
+  final int currentTab;
+
+  Home({Key? key, this.currentTab = 0}) : super(key: key);
+
   @override
-  _HomeState createState() => _HomeState();
+  _HomeState createState() => _HomeState(currentTab: currentTab);
 }
 
 class _HomeState extends State<Home> {
-  int currentTab = 0;
-  final List<Widget> screens = [
-    DashboardPage(),
-    ClientPage(initialTabIndex: 0,),
-    HistoryPage(),
-    MessagePage(),
-  ];
-  final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = DashboardPage();
+  int currentTab;
+
+  _HomeState({required this.currentTab});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageStorage(
-        child: currentScreen,
-        bucket: bucket,
+        child: _getScreen(currentTab),
+        bucket: PageStorageBucket(),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.person_add, color: Colors.white),
@@ -132,7 +130,6 @@ class _HomeState extends State<Home> {
                 child: MaterialButton(
                   onPressed: () {
                     setState(() {
-                      currentScreen = DashboardPage();
                       currentTab = 0;
                     });
                   },
@@ -162,7 +159,6 @@ class _HomeState extends State<Home> {
                 child: MaterialButton(
                   onPressed: () {
                     setState(() {
-                      currentScreen = ClientPage(initialTabIndex: 0,);
                       currentTab = 1;
                     });
                   },
@@ -192,7 +188,6 @@ class _HomeState extends State<Home> {
                 child: MaterialButton(
                   onPressed: () {
                     setState(() {
-                      currentScreen = HistoryPage();
                       currentTab = 2;
                     });
                   },
@@ -254,5 +249,20 @@ class _HomeState extends State<Home> {
       ),
       resizeToAvoidBottomInset: false,
     );
+  }
+
+  Widget _getScreen(int tab) {
+    switch (tab) {
+      case 0:
+        return DashboardPage();
+      case 1:
+        return ClientPage(initialTabIndex: 0);
+      case 2:
+        return HistoryPage();
+      case 3:
+        return MessagePage();
+      default:
+        return DashboardPage();
+    }
   }
 }

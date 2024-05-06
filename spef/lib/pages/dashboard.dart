@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spef/components/DasheComponent.dart';
 import 'package:spef/components/NotifComp.dart';
-import 'package:spef/pages/history.dart';
+import 'package:spef/pages/home.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -56,19 +56,15 @@ class DashboardPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Container(
-                          color: Color(0xFFE8E8E8), // Set background color here
-                          child: HistoryPage(),
-                        ),
-                      ),
-                    );
-                  },
-                  child: NotifComp(),
-                ),
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Home(currentTab: 2)),
+    );
+  },
+  child: NotifComp(),
+),
+
               ),
             ],
           ),
