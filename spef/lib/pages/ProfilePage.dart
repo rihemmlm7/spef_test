@@ -16,36 +16,40 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Material(
-                  color: Colors.grey[300],
-                  shape: CircleBorder(),
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                Material(
-                  color: Colors.grey[300],
-                  shape: CircleBorder(),
-                  child: IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                AddClientPage()), // Navigate to EditProfile screen
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+           Padding(
+  padding: const EdgeInsets.all( 20.0),
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Material(
+        color: Colors.grey[300],
+        shape: CircleBorder(),
+        child: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      Material(
+        color: Colors.grey[300],
+        shape: CircleBorder(),
+        child: IconButton(
+          icon: Icon(Icons.edit),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      AddClientPage()), // Navigate to EditProfile screen
+            );
+          },
+        ),
+      ),
+    ],
+  ),
+),
+
             Expanded(
               child: Column(
                 children: [
@@ -71,7 +75,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.01),
                   ListTile(
-                    contentPadding: EdgeInsets.only(left: 8.0),
+                    contentPadding: EdgeInsets.only(left: 25.0,right:25.0),
                     leading: Icon(Icons.location_on),
                     title: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
@@ -90,7 +94,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.01),
                   ListTile(
-                    contentPadding: EdgeInsets.only(left: 8.0),
+                     contentPadding: EdgeInsets.only(left: 25.0,right:25.0),
                     leading: Icon(Icons.phone),
                     title: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
