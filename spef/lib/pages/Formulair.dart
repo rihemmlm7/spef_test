@@ -11,11 +11,32 @@ class Formulaire extends StatefulWidget {
   _FormulaireState createState() => _FormulaireState();
 }
 
-class _FormulaireState extends State<Formulaire> {
+class _FormulaireState extends State<Formulaire> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
   final int clientsTab1 = 10;
   final int clientsTab2 = 20;
   final int clientsTab3 = 30;
   int _currentTabIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_handleTabChange);
+  }
+
+  @override
+  void dispose() {
+    _tabController.removeListener(_handleTabChange);
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  void _handleTabChange() {
+    setState(() {
+      _currentTabIndex = _tabController.index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +50,7 @@ class _FormulaireState extends State<Formulaire> {
           backgroundColor: Colors.amber,
           title: Text('Formulaire'),
           bottom: TabBar(
+            controller: _tabController,
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(width: 4.0, color: Colors.red),
               insets: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
@@ -112,6 +134,7 @@ class _FormulaireState extends State<Formulaire> {
               vertical: screenHeight * 0.02,
             ),
             child: TabBarView(
+              controller: _tabController,
               children: [
                 SizedBox(
                   width: double.infinity,
@@ -220,7 +243,6 @@ class _FormulaireState extends State<Formulaire> {
                   ),
                 ),
               )
-            
       ),
     );
   }
