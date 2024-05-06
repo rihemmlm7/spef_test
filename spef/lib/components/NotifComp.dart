@@ -14,7 +14,7 @@ class NotifComp extends StatelessWidget {
     return GestureDetector(
       
       child: Container(
-        padding: EdgeInsets.all(9),
+        padding: EdgeInsets.all(1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

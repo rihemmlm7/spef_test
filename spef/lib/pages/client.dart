@@ -170,11 +170,12 @@ class ClientPage extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          
-                          content: Text("Êtes-vous sûr de vouloir supprimer ce client ?"),
+                          content: Text(
+                              "Êtes-vous sûr de vouloir supprimer ce client ?"),
                           actions: <Widget>[
                             TextButton(
-                              onPressed: () => Navigator.of(context).pop(false),
+                              onPressed: () =>
+                                  Navigator.of(context).pop(false),
                               child: Text("Anuller"),
                             ),
                             TextButton(

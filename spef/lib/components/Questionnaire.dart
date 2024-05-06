@@ -187,7 +187,10 @@ class _QuestionnaireState extends State<Questionnaire> {
     ),
                  
                 ),
-                maxLines: 15,
+                maxLines: null,
+                onChanged: (text) {
+    setState(() {}); // Trigger rebuild to update the height
+  },
               ),
               SizedBox(height: 20),
             ],

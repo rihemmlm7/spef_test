@@ -12,7 +12,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(screenWidth * 0.1),
+        padding: EdgeInsets.all(screenWidth * 0.01),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -50,7 +50,7 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 children: [
                   CircleAvatar(
-                    radius: 60,
+                    radius: 40,
                     backgroundImage:
                         NetworkImage('https://picsum.photos/seed/9/600'),
                   ),
@@ -58,7 +58,7 @@ class ProfilePage extends StatelessWidget {
                   Text(
                     'John Doe',
                     style: TextStyle(
-                        fontSize: screenHeight * 0.03,
+                        fontSize: screenHeight * 0.02,
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: screenHeight * 0.03),
@@ -71,13 +71,13 @@ class ProfilePage extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.01),
                   ListTile(
-                    contentPadding: EdgeInsets.zero,
+                    contentPadding: EdgeInsets.only(left: 8.0),
                     leading: Icon(Icons.location_on),
                     title: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Text(
                         'Address',
-                        style: TextStyle(fontSize: screenHeight * 0.025),
+                        style: TextStyle(fontSize: screenHeight * 0.023),
                       ),
                     ),
                     subtitle: Padding(
@@ -88,15 +88,15 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.03),
+                  SizedBox(height: screenHeight * 0.01),
                   ListTile(
-                    contentPadding: EdgeInsets.zero,
+                    contentPadding: EdgeInsets.only(left: 8.0),
                     leading: Icon(Icons.phone),
                     title: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Text(
                         'Téléphone',
-                        style: TextStyle(fontSize: screenHeight * 0.025),
+                        style: TextStyle(fontSize: screenHeight * 0.023),
                       ),
                     ),
                     subtitle: Padding(
@@ -134,7 +134,7 @@ class ProfilePage extends StatelessWidget {
           );
         },
         backgroundColor: Colors.amber,
-        child: Icon(Icons.add, color: Colors.white),
+        child: Icon(Icons.note_add, color: Colors.white),
         shape: CircleBorder(),
       ),
     );
