@@ -11,7 +11,7 @@ class HistoriqueProfile extends StatelessWidget {
           String textToShow = index % 2 == 0 ? 'Visite' : 'Prospect';
 
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: EdgeInsets.symmetric(vertical: 4),
             child: GestureDetector(
               onTap: () {
                 Navigator.push(

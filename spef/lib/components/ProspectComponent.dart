@@ -12,8 +12,8 @@ class ProspectComponent extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 5),
             child: ClipOval(
               child: Container(
-                width: 50,
-                height: 50,
+                width: 47,
+                height: 47,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),

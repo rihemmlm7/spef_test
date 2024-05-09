@@ -5,6 +5,8 @@ import 'package:spef/components/Doc.dart';
 import 'package:spef/components/Media.dart';
 import 'package:spef/components/Questionnaire.dart';
 import 'package:spef/pages/client.dart';
+import 'package:spef/pages/home.dart';
+
 
 class Formulaire extends StatefulWidget {
   @override
@@ -169,7 +171,7 @@ class _FormulaireState extends State<Formulaire> with SingleTickerProviderStateM
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ClientPage(initialTabIndex: 1)),
+                          MaterialPageRoute(builder: (context) => Home(currentTab: 1)),
                         );
                       },
                       child: Text(

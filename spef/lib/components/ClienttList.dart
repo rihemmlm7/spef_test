@@ -4,10 +4,10 @@ class ClienttList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.all(3),
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xFFDEE8EB),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(20), // Apply border radius
         ),
         padding: EdgeInsets.all(10), // Add padding to the container
@@ -18,8 +18,8 @@ class ClienttList extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 5),
               child: ClipOval(
                 child: Container(
-                  width: 50,
-                  height: 50,
+                  width: 47,
+                  height: 47,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                   ),

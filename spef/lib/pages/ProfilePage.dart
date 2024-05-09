@@ -2,68 +2,78 @@ import 'package:flutter/material.dart';
 import 'package:spef/components/HistoriqueProfile.dart';
 import 'package:spef/pages/FicheClientPros.dart';
 import 'package:spef/pages/ClientVisitPage.dart';
+import 'package:spef/components/CustomCard.dart'; // Import the CustomCard widget
+import 'package:spef/components/CustomCard2.dart'; 
 
 class ProfilePage extends StatelessWidget {
+  // Example dynamic data
+  final Map<String, String> userData = {
+    'address': '123 Street, City, Country',
+    'telephone': '123456789',
+    'email': 'john.doe@example.com',
+    'RC': '123456789RC',
+    'AI': '123456789AI',
+    'NIF': '123456789NIF',
+    'NIC': '123456789NIC',
+    // Add more fields as needed
+  };
+
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    final double avatarSize = screenWidth * 0.3;
+    final double cardWidth = screenWidth * 0.5;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white, // Set background color to white
       body: Padding(
         padding: EdgeInsets.all(screenWidth * 0.01),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-           Padding(
-  padding: const EdgeInsets.all( 20.0),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Material(
-        color: Colors.grey[300],
-        shape: CircleBorder(),
-        child: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      Material(
-        color: Colors.grey[300],
-        shape: CircleBorder(),
-        child: IconButton(
-          icon: Icon(Icons.edit),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      AddClientPage()), // Navigate to EditProfile screen
-            );
-          },
-        ),
-      ),
-    ],
-  ),
-),
-
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Material(
+                    color: Colors.grey[300],
+                    shape: CircleBorder(),
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  Material(
+                    color: Colors.grey[300],
+                    shape: CircleBorder(),
+                    child: IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddClientPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               child: Column(
                 children: [
                   CircleAvatar(
                     radius: 40,
-                    backgroundImage:
-                        NetworkImage('https://picsum.photos/seed/9/600'),
+                    backgroundImage: NetworkImage('https://picsum.photos/seed/9/600'),
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   Text(
                     'John Doe',
-                    style: TextStyle(
-                        fontSize: screenHeight * 0.02,
-                        fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: screenHeight * 0.02, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   FractionallySizedBox(
@@ -73,45 +83,37 @@ class ProfilePage extends StatelessWidget {
                       thickness: screenHeight * 0.002,
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.01),
-                  ListTile(
-                    contentPadding: EdgeInsets.only(left: 25.0,right:25.0),
-                    leading: Icon(Icons.location_on),
-                    title: Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Text(
-                        'Address',
-                        style: TextStyle(fontSize: screenHeight * 0.023),
-                      ),
-                    ),
-                    subtitle: Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: Text(
-                        '123 Street, City, Country',
-                        style: TextStyle(fontSize: screenHeight * 0.02),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: screenHeight * 0.01),
-                  ListTile(
-                     contentPadding: EdgeInsets.only(left: 25.0,right:25.0),
-                    leading: Icon(Icons.phone),
-                    title: Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Text(
-                        'Téléphone',
-                        style: TextStyle(fontSize: screenHeight * 0.023),
-                      ),
-                    ),
-                    subtitle: Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: Text(
-                        '123456789',
-                        style: TextStyle(fontSize: screenHeight * 0.02),
+                   SizedBox(height: screenHeight * 0.01),
+                  Expanded(
+                    child: SizedBox(
+                      height: screenHeight * 6.1, // Set the desired height for ListView
+                      child: ListView(
+                        children: [
+                          CustomCard(
+                            icon1: Icons.location_on,
+                            title1: 'Address',
+                            subtitle1: userData['address'] ?? 'Not available',
+                            icon2: Icons.phone,
+                            title2: 'Telephone',
+                            subtitle2: userData['telephone'] ?? 'Not available',
+                            icon3: Icons.email,
+                            title3: 'Email',
+                            subtitle3: userData['email'] ?? 'Not available',
+                          ),
+                          SizedBox(height: 4.0),
+                          CustomCard2(
+                            title1: 'RC',
+                            subtitle1: userData['RC'] ?? 'Not available',
+                            title2: 'AI',
+                            subtitle2: userData['AI'] ?? 'Not available',
+                            title3: 'NIF',
+                            subtitle3: userData['NIF'] ?? 'Not available',
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.03),
+                  
                   FractionallySizedBox(
                     widthFactor: 1,
                     child: Divider(
@@ -120,7 +122,11 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: HistoriqueProfile(),
+                    child: Container(
+                      color: Colors.grey[200], // Set background color to gray
+                     
+                      child: HistoriqueProfile(),
+                    ),
                   ),
                 ],
               ),
