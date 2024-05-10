@@ -121,7 +121,7 @@ class ClientPage extends StatelessWidget {
                           child: ProspectComponent(),
                         ),
                       ),
-                      Divider(color: Colors.black),
+                      
                     ],
                   ),
                 );

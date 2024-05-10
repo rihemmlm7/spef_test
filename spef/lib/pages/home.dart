@@ -18,57 +18,91 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentTab;
-
+  bool showAdditionalButtons = false;
   _HomeState({required this.currentTab});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageStorage(
-        child: _getScreen(currentTab),
-        bucket: PageStorageBucket(),
+      body: Stack(
+        children: [
+                   PageStorage(
+            child: _getScreen(currentTab),
+            bucket: PageStorageBucket(),
+          ),
+                   if (showAdditionalButtons)
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  showAdditionalButtons = false;
+                });
+              },
+              child: Container(
+                color: Colors.black.withOpacity(0.5),
+              ),
+            ),
+                   if (showAdditionalButtons)
+            Positioned(
+              bottom: 30.0,              left: 0,
+              right: 0,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 60,
+                      width: 120,
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ClientVisitPage(),
+                            ),
+                          );
+                        },
+                        backgroundColor: Colors.amber,
+                        child: Text(
+                          'Visit',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Container(
+                      height: 60,
+                      width: 120,
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddClientPage(),
+                            ),
+                          );
+                        },
+                        backgroundColor: Colors.amber,
+                        child: Text(
+                          'Prospect',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.person_add, color: Colors.white),
         backgroundColor: Colors.red,
         onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.dashboard, color: Colors.white),
-                      onPressed: () {
-                        setState(() {
-                          currentTab = 0;
-                          Navigator.pop(context);
-                        });
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.people, color: Colors.white),
-                      onPressed: () {
-                        setState(() {
-                          currentTab = 1;
-                          Navigator.pop(context);
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
+                   setState(() {
+            showAdditionalButtons = !showAdditionalButtons;
+          });
         },
         shape: CircleBorder(),
       ),
