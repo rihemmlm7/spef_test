@@ -18,7 +18,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentTab;
-  bool showAdditionalButtons = false;
+  bool showAdditionalButtons = false; // State to track whether to show additional buttons
+
   _HomeState({required this.currentTab});
 
   @override
@@ -26,11 +27,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: Stack(
         children: [
-                   PageStorage(
+          // Main content
+          PageStorage(
             child: _getScreen(currentTab),
             bucket: PageStorageBucket(),
           ),
-                   if (showAdditionalButtons)
+          // Background overlay
+          if (showAdditionalButtons)
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -39,11 +42,15 @@ class _HomeState extends State<Home> {
               },
               child: Container(
                 color: Colors.black.withOpacity(0.5),
+                width: double.infinity,
+                height: double.infinity,
               ),
             ),
-                   if (showAdditionalButtons)
+          // Additional buttons
+          if (showAdditionalButtons)
             Positioned(
-              bottom: 30.0,              left: 0,
+              bottom: 30.0, // Adjust as needed
+              left: 0,
               right: 0,
               child: Center(
                 child: Row(
@@ -100,7 +107,8 @@ class _HomeState extends State<Home> {
         child: Icon(Icons.person_add, color: Colors.white),
         backgroundColor: Colors.red,
         onPressed: () {
-                   setState(() {
+          // Toggle the state to show/hide additional buttons
+          setState(() {
             showAdditionalButtons = !showAdditionalButtons;
           });
         },

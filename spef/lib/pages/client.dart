@@ -103,27 +103,78 @@ class ClientPage extends StatelessWidget {
             child: ListView.builder(
               itemCount: 20,
               itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProfilePage(),
+                return Column(
+                  children: [
+                    Dismissible(
+                      key: Key('prospect_$index'),
+                      background: Container(
+                        color: Colors.red,
+                        alignment: Alignment.centerRight,
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Icon(Icons.delete, color: Colors.white),
                       ),
-                    );
-                  },
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0),
-                        child: Container(
-                          padding: EdgeInsets.all(0),
-                          child: ProspectComponent(),
+                      direction: DismissDirection.endToStart,
+                      confirmDismiss: (DismissDirection direction) async {
+                        // Show a confirmation dialog
+                        return await showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              content: Text(
+                                "Êtes-vous sûr de vouloir supprimer ce prospect ?",
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(true),
+                                  child: Text(
+                                    "Supprimer",
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(false),
+                                  child: Text(
+                                    "Annuler",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      onDismissed: (DismissDirection direction) {
+                        // Delete the prospect from your data source
+                        // Remove the item from your list
+                      },
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProfilePage(),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 0),
+                          child: Container(
+                            padding: EdgeInsets.all(0),
+                            child: ProspectComponent(),
+                          ),
                         ),
                       ),
-                      
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 80.0), // Add left padding here
+                      child: Divider(
+                        height: 0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 );
               },
             ),
@@ -155,63 +206,78 @@ class ClientPage extends StatelessWidget {
             child: ListView.builder(
               itemCount: 29,
               itemBuilder: (BuildContext context, int index) {
-                return Dismissible(
-                  key: Key(index.toString()), // Unique key for each item
-                  background: Container(
-                    color: Colors.red,
-                    alignment: Alignment.centerRight,
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Icon(Icons.delete, color: Colors.white),
-                  ),
-                  direction: DismissDirection.endToStart,
-                  confirmDismiss: (DismissDirection direction) async {
-                    // Show a confirmation dialog
-                    return await showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          content: Text(
-                              "Êtes-vous sûr de vouloir supprimer ce client ?"),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () =>
-                                  Navigator.of(context).pop(false),
-                              child: Text("Anuller"),
-                            ),
-                            TextButton(
-                              onPressed: () => Navigator.of(context).pop(true),
-                              child: Text("Supprimer"),
-                            ),
-                          ],
+                return Column(
+                  children: [
+                    Dismissible(
+                      key: Key('client_$index'),
+                      background: Container(
+                        color: Colors.red,
+                        alignment: Alignment.centerRight,
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Icon(Icons.delete, color: Colors.white),
+                      ),
+                      direction: DismissDirection.endToStart,
+                      confirmDismiss: (DismissDirection direction) async {
+                        // Show a confirmation dialog
+                        return await showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              content: Text(
+                                "Êtes-vous sûr de vouloir supprimer ce client ?",
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(true),
+                                  child: Text(
+                                    "Supprimer",
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(false),
+                                  child: Text(
+                                    "Annuler",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
                         );
                       },
-                    );
-                  },
-                  onDismissed: (DismissDirection direction) {
-                    // Delete the client from your data source
-                    // Remove the item from your list
-                  },
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfilePage(),
-                        ),
-                      );
-                    },
-                    child: Column(
-                      children: [
-                        Padding(
+                      onDismissed: (DismissDirection direction) {
+                        // Delete the client from your data source
+                        // Remove the item from your list
+                      },
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProfilePage(),
+                            ),
+                          );
+                        },
+                        child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 0),
                           child: Container(
                             padding: EdgeInsets.all(0),
                             child: ClienttList(),
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 80.0), // Add left padding here
+                      child: Divider(
+                        height: 0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 );
               },
             ),
