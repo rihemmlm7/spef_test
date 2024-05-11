@@ -39,7 +39,7 @@ class DashboardPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(2.0),
                 child: MyComponent(),
               ),
               Padding(

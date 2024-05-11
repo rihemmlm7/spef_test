@@ -324,6 +324,7 @@ class _AddClientPageState extends State<AddClientPage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+         elevation: 0,
         color: Color(0xFFE8E8E8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

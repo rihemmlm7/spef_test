@@ -151,7 +151,8 @@ class _FormulaireState extends State<Formulaire> with SingleTickerProviderStateM
         ),
         bottomNavigationBar: _currentTabIndex == 0
             ? BottomAppBar(
-                color: Theme.of(context).bottomAppBarColor,
+              elevation: 0,
+                color: Color(0xFFE8E8E8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[

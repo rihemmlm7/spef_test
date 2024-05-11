@@ -78,8 +78,9 @@ class MyComponent extends StatelessWidget {
 
     return Expanded(
       child: Card(
-        elevation: 3,
-        color: bgColor, // Set the background color
+        
+        elevation: 0,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

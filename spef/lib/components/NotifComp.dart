@@ -20,7 +20,7 @@ class NotifComp extends StatelessWidget {
           children: [
             SizedBox(height: 2),
             Container(
-              width: width,
+              
               padding: EdgeInsets.all(9),
               decoration: BoxDecoration(
                 color: Colors.white,

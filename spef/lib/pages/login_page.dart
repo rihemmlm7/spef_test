@@ -22,9 +22,12 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.only(bottom: 0),
-            width: MediaQuery.of(context).size.width / 1,
-            decoration: LoginPageStyle.containerDecoration(),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bgA.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
             child: Center(
               child: SingleChildScrollView(
                 child: Container(
@@ -265,7 +268,12 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          _isLoading ? _buildLoadingOverlay() : SizedBox(),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: _isLoading ? _buildLoadingOverlay() : SizedBox(),
+          ),
         ],
       ),
     );
