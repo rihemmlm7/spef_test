@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomCard extends StatelessWidget {
+class CustomCard extends StatefulWidget {
   final IconData icon1;
   final String title1;
   final String subtitle1;
@@ -24,6 +24,13 @@ class CustomCard extends StatelessWidget {
   });
 
   @override
+  _CustomCardState createState() => _CustomCardState();
+}
+
+class _CustomCardState extends State<CustomCard> {
+  bool showMore = false;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -38,43 +45,61 @@ class CustomCard extends StatelessWidget {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-            leading: Icon(icon1),
-            title: Text(
-              title1,
-              style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.023),
-            ),
-            subtitle: Text(
-              subtitle1,
-              style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.02),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                  leading: Icon(widget.icon1),
+                  title: Text(
+                    widget.title1,
+                    style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.023),
+                  ),
+                  subtitle: Text(
+                    widget.subtitle1,
+                    style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.02),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    showMore = !showMore;
+                  });
+                },
+                child: Icon(showMore ? Icons.expand_less : Icons.expand_more),
+              ),
+            ],
           ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-            leading: Icon(icon2),
-            title: Text(
-              title2,
-              style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.023),
+          if (showMore) ...[
+            ListTile(
+              contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+              leading: Icon(widget.icon2),
+              title: Text(
+                widget.title2,
+                style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.023),
+              ),
+              subtitle: Text(
+                widget.subtitle2,
+                style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.02),
+              ),
             ),
-            subtitle: Text(
-              subtitle2,
-              style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.02),
+            ListTile(
+              contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+              leading: Icon(widget.icon3),
+              title: Text(
+                widget.title3,
+                style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.023),
+              ),
+              subtitle: Text(
+                widget.subtitle3,
+                style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.02),
+              ),
             ),
-          ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-            leading: Icon(icon3),
-            title: Text(
-              title3,
-              style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.023),
-            ),
-            subtitle: Text(
-              subtitle3,
-              style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.02),
-            ),
-          ),
+          ],
         ],
       ),
     );

@@ -268,12 +268,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: _isLoading ? _buildLoadingOverlay() : SizedBox(),
-          ),
+          _isLoading ? _buildLoadingOverlay() : SizedBox(),
         ],
       ),
     );
