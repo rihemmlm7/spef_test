@@ -6,7 +6,8 @@ import 'package:spef/components/Media.dart';
 import 'package:spef/components/Questionnaire.dart';
 import 'package:spef/pages/client.dart';
 import 'package:spef/pages/home.dart';
-
+import 'package:spef/components/event.dart';
+import 'package:spef/pages/history.dart';
 
 class Formulaire extends StatefulWidget {
   @override
@@ -38,6 +39,19 @@ class _FormulaireState extends State<Formulaire> with SingleTickerProviderStateM
     setState(() {
       _currentTabIndex = _tabController.index;
     });
+  }
+    void _onValider() {
+    final newEvent = Event(
+      date: DateTime.now(),
+      title: 'New Client Created',
+    );
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HistoryPage(newEvent: newEvent),
+      ),
+    );
   }
 
   @override
@@ -156,8 +170,8 @@ class _FormulaireState extends State<Formulaire> with SingleTickerProviderStateM
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
+                    TextButton(
+              onPressed: () {
                         Navigator.of(context).pop();
                       },
                       child: Text(
@@ -169,12 +183,7 @@ class _FormulaireState extends State<Formulaire> with SingleTickerProviderStateM
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Home(currentTab: 1)),
-                        );
-                      },
+                       onTap: _onValider,
                       child: Text(
                         'Valider',
                         style: TextStyle(

@@ -81,8 +81,12 @@ class ClientPage extends StatelessWidget {
     );
   }
 
-  Widget _buildProspectTab(BuildContext context) {
-    return Column(
+Widget _buildProspectTab(BuildContext context) {
+  return RefreshIndicator(
+    onRefresh: () async {
+      // Implement your refresh logic here
+    },
+    child: Column(
       children: [
         Padding(
           padding: EdgeInsets.only(
@@ -181,11 +185,16 @@ class ClientPage extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
+    ),
+  );
+}
 
-  Widget _buildClientTab(BuildContext context) {
-    return Column(
+Widget _buildClientTab(BuildContext context) {
+  return RefreshIndicator(
+    onRefresh: () async {
+      // Implement your refresh logic here
+    },
+    child: Column(
       children: [
         Padding(
           padding: EdgeInsets.only(
@@ -284,8 +293,10 @@ class ClientPage extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
+    ),
+  );
+}
+
 
   Widget _buildCircle(int number) {
     return Container(
