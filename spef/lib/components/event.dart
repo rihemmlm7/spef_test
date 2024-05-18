@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 class Event {
-  final DateTime date;
   final String title;
+  final DateTime date;
 
-  Event({required this.date, required this.title});
+  Event({required this.title, required this.date});
 }

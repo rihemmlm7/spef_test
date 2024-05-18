@@ -27,7 +27,11 @@ class _HistoryPageState extends State<HistoryPage> {
       _events.add(widget.newEvent!);
     }
   }
-
+ void addEvent(Event event) {
+    setState(() {
+      _events.add(event);
+    });
+  }
   void _toggleCalendarFormat() {
     setState(() {
       if (_calendarFormat == CalendarFormat.month) {
@@ -93,8 +97,11 @@ class _HistoryPageState extends State<HistoryPage> {
                               weekendStyle: TextStyle(color: Colors.red),
                             ),
                             calendarStyle: CalendarStyle(
-                              todayDecoration: BoxDecoration(color: Colors.amber),
-                              selectedDecoration: BoxDecoration(color: Colors.amber.shade200),
+                              todayDecoration: BoxDecoration(color: Colors.amber), // Make today circle amber
+                              selectedDecoration: BoxDecoration(
+                                color: Colors.amber.shade200, // Selected day circle amber
+                                shape: BoxShape.circle, // Circular shape
+                              ),
                             ),
                             focusedDay: _focusedDay,
                             selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
@@ -104,6 +111,31 @@ class _HistoryPageState extends State<HistoryPage> {
                               _calendarFormat = format;
                             }),
                             eventLoader: _getEventsForDay,
+                            calendarBuilders: CalendarBuilders(
+                              markerBuilder: (context, date, events) {
+                                if (events.isNotEmpty) {
+                                  return Positioned(
+                                    right: 1,
+                                    bottom: 1,
+                                    child: Container(
+                                      padding: EdgeInsets.all(6),
+                                      decoration: BoxDecoration(
+                                        color: Colors.green,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Text(
+                                        '${events.length}',
+                                        style: TextStyle().copyWith(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return null;
+                              },
+                            ),
                           ),
                         ),
                       ),

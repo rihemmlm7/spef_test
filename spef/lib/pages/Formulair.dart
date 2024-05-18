@@ -41,19 +41,19 @@ class _FormulaireState extends State<Formulaire> with SingleTickerProviderStateM
     });
   }
     void _onValider() {
-    final newEvent = Event(
-      date: DateTime.now(),
-      title: 'New Client Created',
-    );
+  final newEvent = Event(
+    date: DateTime.now(),
+    title: 'New Client Created',
+  );
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HistoryPage(newEvent: newEvent),
-      ),
-    );
-  }
-
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(
+      builder: (context) => Home(currentTab: 2, newEvent: newEvent), // Set currentTab to 2
+    ),
+    (route) => false, // Remove all routes until the new route
+  );
+}
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;

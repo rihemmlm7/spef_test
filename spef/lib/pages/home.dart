@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spef/pages/ClientVisitPage.dart';
 import 'package:spef/pages/FicheClientPros.dart';
-
+import 'package:spef/components/event.dart';
 import 'client.dart';
 import 'dashboard.dart';
 import 'history.dart';
@@ -9,18 +9,20 @@ import 'message.dart';
 
 class Home extends StatefulWidget {
   final int currentTab;
-
-  Home({Key? key, this.currentTab = 0}) : super(key: key);
+   final Event? newEvent;
+   
+ Home({Key? key, this.currentTab = 0, this.newEvent}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState(currentTab: currentTab);
+  _HomeState createState() => _HomeState(currentTab: currentTab, newEvent: newEvent);
 }
 
 class _HomeState extends State<Home> {
   int currentTab;
   bool showAdditionalButtons = false; // State to track whether to show additional buttons
-
-  _HomeState({required this.currentTab});
+Event? newEvent;
+ 
+  _HomeState({required this.currentTab, this.newEvent});
 
   @override
   Widget build(BuildContext context) {
@@ -255,7 +257,7 @@ class _HomeState extends State<Home> {
       case 1:
         return ClientPage(initialTabIndex: 0);
       case 2:
-        return HistoryPage();
+        return HistoryPage(newEvent: newEvent);
       case 3:
         return MessagePage();
       default:
